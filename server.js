@@ -21,6 +21,14 @@ http.createServer((request, response) => {
         filePath = 'index.html';
 
       }
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello Node!\n');
-  }).listen(8080);
+
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          throw err;
+        }
+      
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.write(data);
+    response.end();
+  })
+}).listen(8090)
