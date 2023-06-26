@@ -1,0 +1,15 @@
+{
+  "name": "r3play",
+  "version": "1.0.0",
+  "description": "The web application will provide users with access to information about different movies, directors, and genres. R3:play app. Users will be able to sign up, update their personal information, and create a list of their favorite movies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Airapetian Yevhenii",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
