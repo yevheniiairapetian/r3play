@@ -118,3 +118,6 @@ Timestamp: Fri Jun 23 2023 16:56:11 GMT+0200 (Central European Summer Time)
 URL: /favicon.ico
 Timestamp: Fri Jun 23 2023 16:56:11 GMT+0200 (Central European Summer Time)
 
+::1 - - [05/Jul/2023:09:47:11 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.67"
+::1 - - [05/Jul/2023:09:49:28 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36 Edg/114.0.1823.67"
+::1 - - [05/Jul/2023:09:50:03 +0000] "GET /movies HTTP/1.1" 200 2514 "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36 Edg/114.0.1823.67"
