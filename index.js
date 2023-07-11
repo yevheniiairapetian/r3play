@@ -180,9 +180,91 @@ let movies = [
 
 
 
+
 ]
+
+let favoriteMovies = [];
 app.get('/movies', (req, res) => {
   res.json(movies);
+  //returns all movies in the response as json object
+});
+
+app.get('/movies/:name', (req, res) => {
+  res.json(movies.find((movie) => { return movie.name.toLowerCase() === req.params.name.toLowerCase() }));
+  //returns a specific movie in the response based on its name
+});
+
+app.get('/movies/:name/:genres', (req, res) => {
+  res.json(movies.find((movie) => { return movie.genre === req.params.genres }));
+  //returns a movie genre description in the response based on its title
+});
+
+app.get('/movies/:name/:directors', (req, res) => {
+  res.json(movies.find((movie) => { return movie.director.toLowerCase() === req.params.directors.toLowerCase() }));
+  //returns a movie;s director(s) description in the response
+});
+
+app.post('/users', (req, res) => {
+  let newUser = req.body;
+
+  if (!newUser) {
+    const message = 'Missing user name in request body';
+    res.status(400).send(message);
+  } else {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).send('User ' + newUser + ' was successfully created' );
+  }
+  //creates a new user with a unique ID and with a new password
+});
+
+app.post('/users/:favorites', (req, res) => {
+
+  let chosenMovie = res.body;
+  if (!chosenMovie) {
+    const message = 'You did not add a movie(s) to favorites';
+    res.status(400).send(message);
+  } else {
+    favoriteMovies.push(chosenMovie);
+    res.status(201).send('Successfully added ' + chosenMovie + ' to the list of favorites');
+  }
+  //adds a favorite movies to the list of favorites
+});
+
+app.put('/users/:favorites', (req, res) => {
+  let chosenMovie = res.body;
+  let searchMovie = favoriteMovies.find((movie) => { return movie === req.params.favorites });
+
+  if (chosenMovie === searchMovie) {
+    favoriteMovies.shift(searchMovie);
+    res.status(201).send(chosenMovie + ' was successfully deleted from the favorites');
+  } else {
+    res.status(404).send('The movie was not found.');
+  }
+  //deletes a movies from the favorites list
+});
+
+app.put('/users/:user', (req, res) => {
+  let user = users.find((user) => { return user.userName === req.params.user });
+
+  if (user) {
+    user[req.params.userName] = parseInt(req.params.userName);
+    res.status(201).send('User name succesfully changed to ' + req.params.userName);
+  } else {
+    res.status(404).send('User with the user name ' + req.params.userName + ' was not found.');
+  }
+  //updates the user name
+});
+
+
+app.delete('/users', (req, res) => {
+  let user = users.find((user) => { return user.userName === req.params.user });
+
+  if (user) {
+    users = users.filter((obj) => { return obj.userName !== req.params.user });
+    res.status(201).send('User ' + req.params.user + ' was successfully deleted.');
+  }
+  //deletes a user
 });
 
 app.get('/', (req, res) => {
