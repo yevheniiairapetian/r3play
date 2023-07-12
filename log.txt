@@ -68,3 +68,6 @@
 ::1 - - [11/Jul/2023:17:32:13 +0000] "PUT /john HTTP/1.1" 404 143 "-" "PostmanRuntime/7.32.3"
 ::1 - - [11/Jul/2023:17:32:27 +0000] "PUT /john HTTP/1.1" 404 143 "-" "PostmanRuntime/7.32.3"
 ::1 - - [11/Jul/2023:17:32:55 +0000] "DELETE /john HTTP/1.1" 404 146 "-" "PostmanRuntime/7.32.3"
+::1 - - [12/Jul/2023:17:53:04 +0000] "GET / HTTP/1.1" 200 18 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.79"
+::1 - - [12/Jul/2023:17:53:08 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.79"
+::1 - - [12/Jul/2023:17:53:20 +0000] "GET /documentation HTTP/1.1" 404 152 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.79"
