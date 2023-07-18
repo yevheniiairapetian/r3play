@@ -156,7 +156,7 @@ let movies = [
       "Michael Clarke Duncan",
       "Jackie Chan",
     ],
-    genre: {name: "Sci-Fi", description: "Animation is a method by which still figures are manipulated so that they appear to be moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film. Today, many animations are made with computer-generated imagery (CGI). Computer animation can be very detailed 3D animation, while 2D computer animation (which may have the look of traditional animation) can be used for stylistic reasons, low bandwidth, or faster real-time renderings. Other common animation methods apply a stop motion technique to two- and three-dimensional objects like paper cutouts, puppets, or clay figures."},
+    genre: {name: "Animation", description: "Animation is a method by which still figures are manipulated so that they appear to be moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film. Today, many animations are made with computer-generated imagery (CGI). Computer animation can be very detailed 3D animation, while 2D computer animation (which may have the look of traditional animation) can be used for stylistic reasons, low bandwidth, or faster real-time renderings. Other common animation methods apply a stop motion technique to two- and three-dimensional objects like paper cutouts, puppets, or clay figures."},
     
     director: {name: "John Stevenson", description: "John Stevenson is known for Kung Fu Panda (2008), Middle Watch (2022) and Shrek - Der tollkühne Held (2001).", birthDate:"1958", "deathDate":"-"},
 
