@@ -1,6 +1,50 @@
-tr{
+table{
+    margin:0 auto;
+}
+
+tr:nth-child(odd){
     background-color:slategray;
 }
-td:even{
+tr:nth-child(even){
     background-color:lightgray;
+}
+
+tr:hover{
+    opacity:0.8;
+}
+
+td{
+    padding: 10px;
+}
+
+h1, h2, h3, h4{
+    padding: 10px;
+    background-color: slategray;
+    color:white;
+}
+
+h4{
+    font-size:18px;
+    text-align:center;
+}
+
+p{
+    background-color:darkgray;
+    color:white;
+    padding: 15px 10px;
+    font-size:16px;
+    text-align:center;
+}
+ol, li{
+    background-color: lightgray;
+}
+
+li{
+    padding: 15px 0 10px 15px;
+   
+}
+
+li:hover{
+    background-color:slategray;
+    opacity:0.9;
 }
