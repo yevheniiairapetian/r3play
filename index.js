@@ -325,7 +325,7 @@ app.delete("/users/:id", (req, res) => {
 
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my app!");
+  res.send("Welcome to the R3play app!");
 });
 
 app.use((err, req, res, next) => {
