@@ -108,7 +108,7 @@ app.post("/users/:id/:movieTitle", async (req, res) => {
   },
   { new: true }) // This line makes sure that the updated document is returned
  .then((updatedUser) => {
-   res.json(updatedUser);
+   res.status(201).json(updatedUser);
  })
  .catch((err) => {
    console.error(err);
@@ -123,7 +123,7 @@ app.delete("/users/:id/:movieTitle", async (req, res) => {
   },
   { new: true }) // This line makes sure that the updated document is returned
  .then((updatedUser) => {
-   res.json(updatedUser);
+   res.status(201).json(updatedUser);
  })
  .catch((err) => {
    console.error(err);
