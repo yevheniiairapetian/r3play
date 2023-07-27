@@ -36,10 +36,6 @@
             <td>GET</td>
         </tr>
         <tr>
-            <td>Request Metod Type</td>
-            <td>GET</td>
-        </tr>
-        <tr>
             <td>Query parameters</td>
             <td>None</td>
         </tr>
@@ -52,29 +48,30 @@
         <tr>
             <td>Example response</td>
             <td><em>{
-                    name: "Big",
-                    releaseDate: "June 3, 1988",
-                    actors: ["Tom Hanks", "Elizabeth Perkins", "Robert Loggia", "John Heard"],
-                    director: "Penny Marshall",
-                    rottenTomatoesRate: 98
-                    },
-                    {
-                    name: "Inception",
-                    releaseDate: "July 8, 2010",
-                    actors: [
-                    "Leonardo DiCaprio",
-                    "Ken Watanabe",
-                    "Joseph Gordon-Levitt",
-                    "Marion Cotillard",
-                    "Elliot Page",
-                    "Tom Hardy",
-                    "Cillian Murphy",
-                    "Tom Berenger",
-                    "Michael Caine"
-                    ],
-                    director: "Christopher Nolan",
-                    rottenTomatoesRate: 87
-                    }</em></td>
+                "Genre": {
+                    "Name": "Comedy",
+                    "Description": "A comedy film is a category of film which emphasizes on humor. These films are designed to make the audience laugh in amusement"
+                },
+                "Director": {
+                    "Name": "Penny Marshall",
+                    "Bio": "Penny Marshall was born Carole Penny Marshall on October 15, 1943 in Manhattan.",
+                    "Birth": "1943",
+                    "Death": "2018"
+                },
+                "_id": "64bfc2569f48ba9eb027fc61",
+                "Title": "Big",
+                "Description": "Big is a 1988 American fantasy comedy-drama film directed by Penny Marshall and stars Tom Hanks, Elizabeth Perkins, David Moscow, John Heard, and Robert Loggia.",
+                "ImagePath": "",
+                "Featured": false,
+                "Actors": [
+                    "Tom Hanks",
+                    "Elizabeth Perkins",
+                    "Robert Loggia",
+                    "John Heard"
+                ],
+                "Rating": "98",
+                "ReleaseDate": "1988-01-01T00:00:00.000Z"
+            }</em></td>
         </tr>
     </table>
 
@@ -91,7 +88,7 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Name of the movie in the format <code>movies/:name</code> where <code>:name</code> is replaced with the
+            <td>Name of the movie in the format <code>movies/:Name</code> where <code>:name</code> is replaced with the
                 desired movie</td>
         </tr>
         <tr>
@@ -103,23 +100,35 @@
         <tr>
             <td>Example response</td>
             <td><em>
-                    {
-                    name: "Inception",
-                    releaseDate: "July 8, 2010",
-                    actors: [
-                    "Leonardo DiCaprio",
-                    "Ken Watanabe",
-                    "Joseph Gordon-Levitt",
-                    "Marion Cotillard",
-                    "Elliot Page",
-                    "Tom Hardy",
-                    "Cillian Murphy",
-                    "Tom Berenger",
-                    "Michael Caine"
+                {
+                    "Genre": {
+                        "Name": "Sci-Fi",
+                        "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration etc."
+                    },
+                    "Director": {
+                        "Name": "Christopher Nolan",
+                        "Bio": "Christopher Edward Nolan (born 30 July 1970) is a British and American filmmaker known for his Hollywood blockbusters with complex storytelling. Nolan is considered a leading filmaker of the 21st century",
+                        "Birth": "1970"
+                    },
+                    "_id": "64bfc64f9f48ba9eb027fc62",
+                    "Title": "Inception",
+                    "Description": "Inception is a 2010 science finction action film written and directed by Christopher Nolan. The film stars Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt and others",
+                    "ImagePath": "",
+                    "Featured": true,
+                    "Actors": [
+                        "Leonardo DiCaprio",
+                        "Ken Watanabe",
+                        "Joseph Gordon-Levitt",
+                        "Marion Cotillard",
+                        "Elliot Page",
+                        "Tom Hardy",
+                        "Cillian Murphy",
+                        "Tom Berenger",
+                        "Michael Caine"
                     ],
-                    director: "Christopher Nolan",
-                    rottenTomatoesRate: 87
-                    }</em></td>
+                    "Rating": "87",
+                    "ReleaseDate": "2010-01-01T00:00:00.000Z"
+                }</em></td>
         </tr>
     </table>
     <h4>To return a movie genre name and description:</h4>
@@ -136,7 +145,7 @@
         <tr>
             <td>Query parameters</td>
             <td>Genre of the movie in the format
-                <code>https://github.com/yevheniiairapetian/r3play/movies/genres/:genreName</code> where
+                <code>https://github.com/yevheniiairapetian/r3play/movies/Genres/:GenreName</code> where
                 <code>:genres</code> is
                 replaced with the desired genre
             </td>
@@ -150,16 +159,14 @@
         <tr>
             <td>Example response</td>
             <td><em>
-                    {
-                    "name": "Comedy",
-                    "description": "A comedy film is a category of film which emphasizes on humor. These films are
-                    designed to make the audience laugh in amusement. Films in this style traditionally have a happy
-                    ending (dark comedy being an exception to this rule)."
-                    }</em></td>
+                {
+                    "Name": "Comedy",
+                    "Description": "A comedy film is a category of film which emphasizes on humor. These films are designed to make the audience laugh in amusement"
+                }</em></td>
         </tr>
     </table>
     <h4>To return a movie director's name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/Directors/:directorName</code>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/Directors/:DirectorName</code>
     </p>
     <table>
         <tr>
@@ -177,29 +184,16 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Directors/TheWachowskis</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Directors/The%20Wachowskis</code>
 
             </td>
         </tr>
         <tr>
             <td>Example response</td>
             <td><em>{
-                    "name": "TheWachowskis",
-                    "description": "Lana Wachowski and her sister Lilly Wachowski, also known as the Wachowskis, are the
-                    duo behind such ground-breaking movies as Matrix (1999) and Cloud Atlas (2012). Born to mother
-                    Lynne, a nurse, and father Ron, a businessman of Polish descent, Wachowski grew up in Chicago and
-                    formed a tight creative relationship with her sister Lilly. After the siblings dropped out of
-                    college, they started a construction business and wrote screenplays. Their 1995 script, Assassins -
-                    Die Killer (1995), was made into a movie, leading to a Warner Bros contract. After that time, the
-                    Wachowskis devoted themselves to their movie careers. In 2012, during interviews for Cloud Atlas and
-                    in her acceptance speech for the Human Rights Campaign's Visibility Award, Lana spoke about her
-                    experience of being a transgender woman, sacrificing her much cherished anonymity out of a sense of
-                    responsibility. Lana is known to be extremely well-read, loves comic books and exploring ideas of
-                    imaginary worlds, and was inspired by Stanley Kubrick's 2001 - Odyssee im Weltraum (1968) in
-                    creating Cloud Atlas.",
-                    "birthDate": "6/21/1965",
-                    "deathDate": "-"
-                    }</em></td>
+                "Name": "The Wachowskis",
+                "Bio": "Lilly Wachowski and Lana Wachowski are American film and television directors, writers, and producers."
+            }</em></td>
 
         </tr>
     </table>
@@ -216,20 +210,28 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Enter the user name as JSON object</td>
+            <td>Enter the user name, password, email (all required) and date of birthday (optional) as JSON object</td>
         </tr>
         <tr>
             <td>Example request</td>
             <td><code>https://github.com/yevheniiairapetian/r3play/users</code>
-
+                <code>{
+                    "Username": "Johny",
+                    "Password": "12345",
+                    "Email": "johny321@gmail.com"
+                } </code>
             </td>
         </tr>
         <tr>
             <td>Example response</td>
             <td><em>{
-                    "name": "Mark",
-                    "id": "7deb4440-6dd7-4328-b815-56b67bfb16a6"
-                    }</em></td>
+                "Username": "Johny",
+                "Password": "12345",
+                "Email": "johny321@gmail.com",
+                "FavoriteMovies": [],
+                "_id": "64c2c3acc5aaaf1c491bdb6e",
+                "__v": 0
+            }</em></td>
 
         </tr>
     </table>
@@ -239,7 +241,7 @@
     <table>
         <tr>
             <td>Response formats</td>
-            <td>Text message</td>
+            <td>JSON</td>
         </tr>
         <tr>
             <td>Request Metod Type</td>
@@ -247,29 +249,34 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Enter the new user name as query parameter</td>
+            <td>Update the user name, password, email and/or date of birthday as JSON object</td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/1</code>
-
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny</code>
+                <code>{
+                    "Username": "Johny1",
+                    "Password": "1232245",
+                    "Email": "johny321@gmail.com"
+                    
+                }  </code>
             </td>
         </tr>
         <tr>
             <td>Example response</td>
             <td><em>{
-                    "id": 1,
-                    "name": "Johny",
-                    "favoriteMovies": [
-                    "Inception",
-                    "Big"
-                    ]
-                    }</em></td>
+                "_id": "64c2c3acc5aaaf1c491bdb6e",
+                "Username": "Johny1",
+                "Password": "1232245",
+                "Email": "johny321@gmail.com",
+                "FavoriteMovies": [],
+                "__v": 0
+            }</em></td>
 
         </tr>
     </table>
     <h4>To delete a user:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users</code></p>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -285,17 +292,17 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/:id</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1</code>
 
             </td>
         </tr>
         <tr>
             <td>Example response</td>
-            <td><em>User 1 has been successfully deleted.</em></td>
+            <td><em>Johny1 was deleted.</em></td>
 
         </tr>
     </table>
-    <h4>To add a movie to a favotites list:</h4>
+    <h4>To add a movie to a favorites list:</h4>
     <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movieTitle</code></p>
     <table>
         <tr>
@@ -312,7 +319,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/2/Matrix</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/Big</code>
 
             </td>
         </tr>
@@ -339,7 +346,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/:id/:movieTitle</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/Big</code>
 
             </td>
         </tr>
