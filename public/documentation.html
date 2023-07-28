@@ -78,7 +78,7 @@
     </table>
 
     <h4>To return a specific movie by name:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:movieTitle</code></p>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:MovieTitle</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -90,8 +90,8 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Name of the movie in the format <code>movies/:Name</code> where <code>:name</code> is replaced with the
-                desired movie</td>
+            <td>Name of the movie in the format <code>movies/:MovieTitle</code> where <code>:MovieTitle</code> is replaced with the
+                desired movie title</td>
         </tr>
         <tr>
             <td>Example request</td>
@@ -139,7 +139,7 @@
         </tr>
     </table>
     <h4>To return a movie genre name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:genres</code></p>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:genres/:GenreName</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -152,14 +152,14 @@
         <tr>
             <td>Query parameters</td>
             <td>Genre of the movie in the format
-                <code>https://github.com/yevheniiairapetian/r3play/movies/Genres/:GenreName</code> where
+                <code>https://github.com/yevheniiairapetian/r3play/movies/genres/:GenreName</code> where
                 <code>:genres</code> is
                 replaced with the desired genre
             </td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Genres/Comedy</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/movies/genres/Comedy</code>
 
             </td>
         </tr>
@@ -174,7 +174,7 @@
         </tr>
     </table>
     <h4>To return a movie director's name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/Directors/:DirectorName</code>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/directors/:DirectorName</code>
     </p>
     <table>
         <tr>
@@ -187,7 +187,7 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Genre of the movie in the format <code>movies/:name/:directors</code> where <code>:directors</code> is
+            <td>Genre of the movie in the format <code>movies/:directors/:DirectorName</code> where <code>:DirectorName</code> is
                 replaced with the desired movie director(s) name(s)</td>
         </tr>
         <tr>
