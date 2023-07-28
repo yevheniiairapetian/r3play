@@ -303,7 +303,7 @@
         </tr>
     </table>
     <h4>To add a movie to a favorites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movieTitle</code></p>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movies/:MovieID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -315,22 +315,31 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Enter the user ID and movie name in the query</td>
+            <td>Enter the user ID and movie ID in the query</td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/Big</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
         <tr>
             <td>Example response</td>
-            <td><em>Matrix has been successfully added to Hanna's favorite movies</em></td>
+            <td><em>{
+                "_id": "64c2c63b5d5ff7f51efadaed",
+                "Username": "Johny1",
+                "Password": "1232245",
+                "Email": "johny321@gmail.com",
+                "FavoriteMovies": [
+                    "64bfd9ea9f48ba9eb027fc6a"
+                ],
+                "__v": 0
+            }</em></td>
 
         </tr>
     </table>
     <h4>To delete a movie from a favotites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:favotites</code></p>
+    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movies/:MovieID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -342,17 +351,24 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Enter the user ID and movie name in the query</td>
+            <td>Enter the user ID and movie ID in the query</td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/Big</code>
+            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
         <tr>
             <td>Example response</td>
-            <td><em>Matrix has been removed from Hanna's favorite movies.</em></td>
+            <td><em>{
+                "_id": "64c2c63b5d5ff7f51efadaed",
+                "Username": "Johny1",
+                "Password": "1232245",
+                "Email": "johny321@gmail.com",
+                "FavoriteMovies": [],
+                "__v": 0
+            }</em></td>
 
         </tr>
     </table>

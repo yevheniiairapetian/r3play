@@ -102,9 +102,9 @@ app.post("/users", async (req, res) => {
   //creates a new user with a unique ID and with a new password
 });
 
-app.post("/users/:id/:movieTitle", async (req, res) => {
+app.post("/users/:id/:movies/:MovieID", async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: {FavoriteMovies: req.params.movieTitle}
+    $push: {FavoriteMovies: req.params.MovieID}
   },
   { new: true }) // This line makes sure that the updated document is returned
  .then((updatedUser) => {
@@ -117,9 +117,9 @@ app.post("/users/:id/:movieTitle", async (req, res) => {
   //adds a favorite movies to the list of favorites
 });
 
-app.delete("/users/:id/:movieTitle", async (req, res) => {
+app.delete("/users/:id/:movies/:MovieID", async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: { FavoriteMovies: req.params.movieTitle }
+    $pull: { FavoriteMovies: req.params.MovieID }
   },
   { new: true }) // This line makes sure that the updated document is returned
  .then((updatedUser) => {
