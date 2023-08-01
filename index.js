@@ -19,7 +19,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 });
 app.use(morgan("combined", { stream: accessLogStream }));
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
