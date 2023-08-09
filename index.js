@@ -20,6 +20,8 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 });
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(bodyparser.json());
+const cors = require('cors');
+app.use(cors());
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
@@ -79,6 +81,7 @@ app.get("/movies/directors/:directorName", passport.authenticate('jwt', { sessio
 
 
 app.post("/users", async (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
@@ -87,7 +90,7 @@ app.post("/users", async (req, res) => {
         Users
           .create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })

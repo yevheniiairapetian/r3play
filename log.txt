@@ -548,3 +548,6 @@
 ::1 - - [01/Aug/2023:16:39:59 +0000] "DELETE /sonko11/ HTTP/1.1" 404 150 "-" "PostmanRuntime/7.32.3"
 ::1 - - [01/Aug/2023:16:40:12 +0000] "DELETE /users/sonko11/ HTTP/1.1" 200 20 "-" "PostmanRuntime/7.32.3"
 ::1 - - [01/Aug/2023:16:40:41 +0000] "DELETE /users/alan42/ HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
+::1 - - [09/Aug/2023:15:07:00 +0000] "POST / HTTP/1.1" 404 140 "-" "PostmanRuntime/7.32.3"
+::1 - - [09/Aug/2023:15:07:06 +0000] "GET / HTTP/1.1" 200 26 "-" "PostmanRuntime/7.32.3"
+::1 - - [09/Aug/2023:15:07:12 +0000] "GET / HTTP/1.1" 200 26 "-" "PostmanRuntime/7.32.3"
