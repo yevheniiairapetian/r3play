@@ -3,8 +3,8 @@ const mongoose = require("mongoose"),
 const Movies = Models.Movie;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
-mongoose.connect('mongodb://localhost:27017/replaydb', { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongodb://localhost:27017/replaydb
 const express = require("express"),
   morgan = require("morgan"),
   fs = require("fs"),
