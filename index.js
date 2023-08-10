@@ -2,7 +2,7 @@ const mongoose = require("mongoose"),
   Models = require("./models");
 const Movies = Models.Movie;
 const Users = Models.User;
-
+const { check, validationResult } = require('express-validator');
 mongoose.connect('mongodb://localhost:27017/replaydb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const express = require("express"),
@@ -80,7 +80,17 @@ app.get("/movies/directors/:directorName", passport.authenticate('jwt', { sessio
 });
 
 
-app.post("/users", async (req, res) => {
+app.post("/users", [
+  check('Username', 'Username is required').isLength({ min: 5 }),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], async (req, res) => {
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
   let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({ Username: req.body.Username })
     .then((user) => {
@@ -94,7 +104,7 @@ app.post("/users", async (req, res) => {
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
-          .then((user) => { res.status(201).json({Username: user.Username, Email: user.Email}) })
+          .then((user) => { res.status(201).json({ Username: user.Username, Email: user.Email }) })
           .catch((error) => {
             console.error(error);
             res.status(500).send('Error: ' + error);
@@ -142,7 +152,17 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
 
 
 
-app.put("/users/:id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
+  check('Username', 'Username is required').isLength({ min: 5 }),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], async (req, res) => {
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $set:
     {
