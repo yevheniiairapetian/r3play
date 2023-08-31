@@ -17,7 +17,7 @@ let movieSchema = mongoose.Schema({
   Rating: String,
   ReleaseDate: Date,
   Duration: String,
-  "IMDb Rating": String
+  IMDbRating: String
 
 });
 
