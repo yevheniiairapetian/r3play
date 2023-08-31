@@ -15,7 +15,9 @@ let movieSchema = mongoose.Schema({
   Featured: Boolean,
   Actors: [String],
   Rating: String,
-  ReleaseDate: Date
+  ReleaseDate: Date,
+  Duration: String,
+  "IMDb Rating": String
 
 });
 
