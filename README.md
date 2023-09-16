@@ -10,20 +10,20 @@ This project contains a R3play web API allowing users to access information abou
 
 
 ## Features
-- Register
-- Login
-- Deregister
+- Register user
+- Login user
+- Deregister user
 - Update user information
 - Access information about different movies, including movie description, release year, rating, list of actors, director, director birth/death year, bio etc.
-- Add a movie to favorites
-- Delete a movie from favorites.
+- Add a movie to favorites list
+- Delete a movie from favorites list
 
 ## Project Dependencies
 - Body-parser
 - Express
 - Mongoose
 - Cors
-  Please find other project dependencies in the package.json file
+- _Please find other project dependencies in the package.json file_
   
 ## Live Version
 The App is live [here](https://r3play-934f9ea5664d.herokuapp.com/)
