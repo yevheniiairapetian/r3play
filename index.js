@@ -230,7 +230,8 @@ app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session:
 
 
 
-app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
+app.put('/users',  
+passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
