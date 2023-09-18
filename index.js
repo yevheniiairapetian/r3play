@@ -235,30 +235,31 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
-], async (req, res) => {
+  ], async (req, res) => {
   let errors = validationResult(req);
-
+  
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+  return res.status(422).json({ errors: errors.array() });
   }
+  let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $set:
-    {
-      Username: req.body.Username,
-      Password: req.body.Password,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
-    }
+  $set:
+  {
+  Username: req.body.Username,
+  Password: hashedPassword,
+  Email: req.body.Email,
+  Birthday: req.body.Birthday
+  }
   },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    })
-});
+  { new: true }) // This line makes sure that the updated document is returned
+  .then((updatedUser) => {
+  res.json(updatedUser);
+  })
+  .catch((err) => {
+  console.error(err);
+  res.status(500).send('Error: ' + err);
+  })
+  });
 
 //updates the user name
 
