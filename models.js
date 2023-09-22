@@ -24,7 +24,7 @@ let movieSchema = mongoose.Schema({
 let TVseriesSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
-  Season: {},
+  Season: [String],
   Genre: {
     Name: String,
     Description: String
