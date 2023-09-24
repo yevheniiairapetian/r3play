@@ -37,7 +37,8 @@ let TVseriesSchema = mongoose.Schema({
   Featured: Boolean,
   Actors: [String],
   Rating: String,
-  ReleaseDate: Date
+  ReleaseDate: Date,
+  Trailer: String
 
 });
 
