@@ -17,7 +17,8 @@ let movieSchema = mongoose.Schema({
   Rating: String,
   ReleaseDate: Date,
   Duration: String,
-  IMDbRating: String
+  IMDbRating: String,
+  Trailer: String
 
 });
 
@@ -37,6 +38,8 @@ let TVseriesSchema = mongoose.Schema({
   Featured: Boolean,
   Actors: [String],
   Rating: String,
+  Duration: String,
+  IMDbRating: String,
   ReleaseDate: Date,
   Trailer: String
 
