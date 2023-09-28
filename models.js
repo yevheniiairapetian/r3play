@@ -45,6 +45,29 @@ let TVseriesSchema = mongoose.Schema({
 
 });
 
+let AnimeSchema = mongoose.Schema({
+  Title: { type: String, required: true },
+  Description: { type: String, required: true },
+  Season: [String],
+  Genre: {
+    Name: String,
+    Description: String
+  },
+  Director: {
+    Name: String,
+    Bio: String
+  },
+  ImagePath: String,
+  Featured: Boolean,
+  Actors: [String],
+  Rating: String,
+  Duration: String,
+  IMDbRating: String,
+  ReleaseDate: Date,
+  Trailer: String
+
+});
+
 let userSchema = mongoose.Schema({
   Username: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
@@ -62,9 +85,11 @@ userSchema.methods.validatePassword = function (password) {
 };
 
 let Movie = mongoose.model('Movie', movieSchema);
+let Anime = mongoose.model('Anime', AnimeSchema);
 let TVseries = mongoose.model('TVseries', TVseriesSchema);
 let User = mongoose.model('User', userSchema);
 
 module.exports.Movie = Movie;
+module.exports.Anime = Anime;
 module.exports.TVseries = TVseries;
 module.exports.User = User;

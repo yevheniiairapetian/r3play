@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'),
   Models = require("./models");
 const Movies = Models.Movie;
+const Anime = Models.Anime;
 const TVseries = Models.TVseries;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
@@ -50,6 +51,18 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
     });
 });
 
+app.get("/anime", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Anime.find()
+    .then((anime) => {
+      res.status(201).json(anime);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error:' + err);
+      //returns all anime in the response as json object
+    });
+});
+
 app.get("/tvseries", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await TVseries.find()
     .then((tvseries) => {
@@ -80,6 +93,18 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
 });
 //returns a specific movie in the response based on its name
 
+app.get('/anime/:animeTitle', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Anime.findOne({ Title: req.params.movieTitle })
+    .then((anime) => {
+      res.status(201).json(anime);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+//returns a specific anime in the response based on its name
+
 app.get('/tvseries/:tvTitle', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await TVseries.findOne({ Title: req.params.tvTitle })
     .then((tvseries) => {
@@ -104,6 +129,18 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
 });
 //returns a movie genre description in the response based on its title
 
+app.get('/anime/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Anime.findOne({ 'Genre.Name': req.params.genreName })
+    .then((anime) => {
+      res.status(201).json(anime.Genre);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+//returns a movie genre description in the response based on its title
+
 app.get('/tvseries/genres/:tvName', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await TVseries.findOne({ 'Genre.Name': req.params.genreName })
     .then((tvseries) => {
@@ -114,12 +151,23 @@ app.get('/tvseries/genres/:tvName', passport.authenticate('jwt', { session: fals
       res.status(500).send('Error: ' + err);
     });
 });
-//returns a tv series genre description in the response based on its title
+//returns an anime genre description in the response based on its title
 
 app.get("/movies/directors/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.findOne({ 'Director.Name': req.params.directorName })
     .then((movie) => {
       res.status(201).json(movie.Director);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
+app.get("/anime/directors/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.findOne({ 'Director.Name': req.params.directorName })
+    .then((anime) => {
+      res.status(201).json(anime.Director);
     })
     .catch((err) => {
       console.error(err);
@@ -192,6 +240,21 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
   //adds a favorite movies to the list of favorites
 });
 
+app.post("/users/:id/:anime/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: { FavoriteMovies: req.params.AnimeID }
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //adds a favorite anime to the list of favorites
+});
+
 app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.tvID }
@@ -207,6 +270,7 @@ app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: f
   //adds a favorite tv series to the list of favorites
 });
 
+
 app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.MovieID }
@@ -220,6 +284,21 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
       res.status(500).send('Error: ' + err);
     });
   //deletes a movies from the favorites list
+});
+
+app.delete("/users/:id/:anime/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: { FavoriteMovies: req.params.AnimeID }
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //deletes an anime from the favorites list
 });
 
 app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
