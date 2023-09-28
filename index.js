@@ -129,7 +129,7 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
 });
 //returns a movie genre description in the response based on its title
 
-app.get('/anime/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/anime/genres/:animeName', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Anime.findOne({ 'Genre.Name': req.params.genreName })
     .then((anime) => {
       res.status(201).json(anime.Genre);
