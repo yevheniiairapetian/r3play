@@ -25,23 +25,25 @@ let movieSchema = mongoose.Schema({
 let TVseriesSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
-  Season: [String],
   Genre: {
     Name: String,
     Description: String
   },
   Director: {
     Name: String,
-    Bio: String
+    Bio: String,
+    Birth: String,
+    Death: String,
   },
   ImagePath: String,
-  Featured: Boolean,
   Actors: [String],
+  Featured: Boolean,
   Rating: String,
-  Duration: String,
-  IMDbRating: String,
   ReleaseDate: Date,
-  Trailer: String
+  Season: [String],
+  Trailer: String,
+  IMDbRating: String,
+  Duration: String,
 
 });
 
@@ -73,7 +75,7 @@ let userSchema = mongoose.Schema({
   Password: { type: String, required: true },
   Email: { type: String, required: true, unique: true },
   Birthday: Date,
-  FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', ref: 'TVseries' }]
+  FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', ref: 'TVseries', ref: 'Anime' }]
 });
 
 userSchema.statics.hashPassword = (password) => {
