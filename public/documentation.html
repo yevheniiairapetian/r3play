@@ -29,7 +29,7 @@
     <a style="color: blue; font-size:18px;" href="#anime">To anime series section</a>
 
     <h4 id="movies">To return a list of ALL movies:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/movies</code>
 
             </td>
         </tr>
@@ -82,7 +82,7 @@
     </table>
 
     <h4>To return a specific movie by name:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:MovieTitle</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/:MovieTitle</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -100,7 +100,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Inception</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/movies/Inception</code>
 
             </td>
         </tr>
@@ -144,7 +144,7 @@
         </tr>
     </table>
     <h4>To return a movie genre name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/:genres/:GenreName</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies/:genres/:GenreName</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -157,14 +157,14 @@
         <tr>
             <td>Query parameters</td>
             <td>Genre of the movie in the format
-                <code>https://github.com/yevheniiairapetian/r3play/movies/genres/:GenreName</code> where
+                <code>https://r3play-934f9ea5664d.herokuapp.com/movies/genres/:GenreName</code> where
                 <code>:GenreName</code> is
                 replaced with the desired genre
             </td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/genres/Comedy</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/movies/genres/Comedy</code>
 
             </td>
         </tr>
@@ -179,7 +179,7 @@
         </tr>
     </table>
     <h4>To return a movie director's name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/movies/directors/:DirectorName</code>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies/directors/:DirectorName</code>
     </p>
     <table>
         <tr>
@@ -198,7 +198,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Directors/The%20Wachowskis</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/movies/Directors/The%20Wachowskis</code>
 
             </td>
         </tr>
@@ -213,7 +213,7 @@
         </tr>
     </table>
     <h4>To create a new user:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -229,7 +229,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users</code><br>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users</code><br>
                 <code><em>JSON request:</em><br>{
                     "Username": "Johny",<br>
                     "Password": "12345",<br>
@@ -252,7 +252,7 @@
     </table>
 
     <h4>To login</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/login</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/login</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -268,7 +268,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/login</code><br>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/login</code><br>
                 <code><em>JSON request:</em><br>{
                     "Username": "Johny",<br>
                     "Password": "12345",<br>
@@ -290,7 +290,7 @@
     </table>
 
     <h4>To update a user name:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -306,7 +306,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny</code><br>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny</code><br>
                 <code><em>JSON request:</em><br>{
                     "Username": "Johny1",<br>
                     "Password": "1232245",<br>
@@ -329,7 +329,7 @@
         </tr>
     </table>
     <h4>To delete a user:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -345,7 +345,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1</code>
 
             </td>
         </tr>
@@ -356,7 +356,7 @@
         </tr>
     </table>
     <h4>To add a movie to a favorites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movies/:MovieID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:movies/:MovieID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -372,7 +372,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
@@ -392,7 +392,7 @@
         </tr>
     </table>
     <h4>To delete a movie from a favotites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:movies/:MovieID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:movies/:MovieID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -408,7 +408,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/movies/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
@@ -432,7 +432,7 @@
 
 
     <h4 id="tv">To return a list of ALL tv series:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/tvseries</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -448,7 +448,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/tvseries</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/tvseries</code>
 
             </td>
         </tr>
@@ -481,7 +481,7 @@
     </table>
 
     <h4>To return a specific tv series by name:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/tvseries/:tvID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/:tvID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -499,7 +499,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/movies/Loki%20%28Season%201%29</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/movies/Loki%20%28Season%201%29</code>
 
             </td>
         </tr>
@@ -532,7 +532,7 @@
         </tr>
     </table>
     <h4>To return a tv series genre name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/tvseries/:genres/:GenreName</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/:genres/:GenreName</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -545,14 +545,14 @@
         <tr>
             <td>Query parameters</td>
             <td>Genre of the tv series in the format
-                <code>https://github.com/yevheniiairapetian/r3play/tvseries/genres/:GenreName</code> where
+                <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/genres/:GenreName</code> where
                 <code>:GenreName</code> is
                 replaced with the desired genre
             </td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/tvseries/genres/Sci-Fi</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/genres/Sci-Fi</code>
 
             </td>
         </tr>
@@ -566,7 +566,7 @@
         </tr>
     </table>
     <h4>To return a tv series director's name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/tvseries/directors/:DirectorName</code>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/directors/:DirectorName</code>
     </p>
     <table>
         <tr>
@@ -585,7 +585,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/tvseries/Directors/Kate%20Herron</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/Directors/Kate%20Herron</code>
 
             </td>
         </tr>
@@ -600,7 +600,7 @@
     
     </table>
     <h4>To add a tv series to a favorites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:tvseries/:tvID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:tvseries/:tvID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -616,7 +616,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/tvseries/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/tvseries/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
@@ -636,7 +636,7 @@
         </tr>
     </table>
     <h4>To delete a tvseries from a favotites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:tvseries/:tvID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:tvseries/:tvID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -652,7 +652,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/tvseries/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/tvseries/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
@@ -675,7 +675,7 @@
 
 
     <h4 id="anime">To return a list of ALL anime series:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/animes</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -691,7 +691,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/animes</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/animes</code>
 
             </td>
         </tr>
@@ -724,7 +724,7 @@
     </table>
 
     <h4>To return a specific anime series by name:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/animes/:AnimeID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes/:AnimeID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -742,7 +742,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/animes/Ergo%20Proxy</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/animes/Ergo%20Proxy</code>
 
             </td>
         </tr>
@@ -775,7 +775,7 @@
         </tr>
     </table>
     <h4>To return an anime series genre name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/animes/:genres/:GenreName</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes/:genres/:GenreName</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -788,14 +788,14 @@
         <tr>
             <td>Query parameters</td>
             <td>Genre of the anime series in the format
-                <code>https://github.com/yevheniiairapetian/r3play/animes/genres/:GenreName</code> where
+                <code>https://r3play-934f9ea5664d.herokuapp.com/animes/genres/:GenreName</code> where
                 <code>:GenreName</code> is
                 replaced with the desired genre
             </td>
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/animes/genres/Cyberpunk</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/animes/genres/Cyberpunk</code>
 
             </td>
         </tr>
@@ -809,7 +809,7 @@
         </tr>
     </table>
     <h4>To return an anime series director's name and description:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/tvseries/directors/:DirectorName</code>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/directors/:DirectorName</code>
     </p>
     <table>
         <tr>
@@ -828,7 +828,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/animes/Directors/Shūkō%20Murase</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/animes/Directors/Shūkō%20Murase</code>
 
             </td>
         </tr>
@@ -843,7 +843,7 @@
     
     </table>
     <h4>To add an anime series to a favorites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:animes/:AnimeID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:animes/:AnimeID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -859,7 +859,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/animes/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/animes/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
@@ -879,7 +879,7 @@
         </tr>
     </table>
     <h4>To delete an anime series from a favotites list:</h4>
-    <p>Use the resource URl: <code>https://github.com/yevheniiairapetian/r3play/users/:id/:animes/:AnimeID</code></p>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:animes/:AnimeID</code></p>
     <table>
         <tr>
             <td>Response formats</td>
@@ -895,7 +895,7 @@
         </tr>
         <tr>
             <td>Example request</td>
-            <td><code>https://github.com/yevheniiairapetian/r3play/users/Johny1/animes/64bfd9ea9f48ba9eb027fc6a</code>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1/animes/64bfd9ea9f48ba9eb027fc6a</code>
 
             </td>
         </tr>
