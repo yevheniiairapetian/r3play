@@ -35,6 +35,7 @@ Or download directly by clicking on <> Code button > Download ZIP.
 Install the required dependencies using the ```npm install``` command.
 Please refer to the Documentation page for more information
 
-## Contact
-Feel free to contact me via [email](mailto:sonkozhenia11@gmail.com) or [LinkedIn](https://www.linkedin.com/in/yevhenii-airapetian/). 
-Have a nice day!
+## Contact:
+Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevhenii-airapetian/) or  
+[email](mailto:sonkozhenia11@gmail.com) or 
+via the contact information on the [website](https://yevheniiairapetian.github.io/portfolio-website/contact.html) 
