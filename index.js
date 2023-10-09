@@ -373,7 +373,7 @@ app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async
 
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the R3play app!");
+  res.sendFile('documentation.html', { root: 'public' });
 });
 
 app.use((err, req, res, next) => {
