@@ -32,8 +32,8 @@ The App is live [here](https://r3play-934f9ea5664d.herokuapp.com/)
 To clone the app use the following command:
 ```console git clone git@github.com:yevheniiairapetian/r3play.git```
 Or download directly by clicking on <> Code button > Download ZIP. 
-Install the required dependencies using the ```npm install``` command.
-Please refer to the Documentation page for more information
+Install the required dependencies using the ```npm install``` command. Use the ```node index.js``` or ```nodemon index.js``` terminal commands to run the project.
+Please refer to the [documentation](https://r3play-934f9ea5664d.herokuapp.com/documentation) for more information.
 
 ## Contact:
 Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevhenii-airapetian/) or  
