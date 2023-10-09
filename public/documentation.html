@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <h1 id="top"><em>R3play API</em> Documentation</h1>
+    <h1 class="sections-headings" id="top"><em>R3play API</em> Documentation</h1>
     <h3>R3play API Github repository</h3>
     <p>Please refer for more information to the <a target="_blank" href="https://github.com/yevheniiairapetian/r3play">R3play API Github repository</a></p>
-    <h2>Features</h2>
+    <h2 class="sections-headings">Features</h2>
     <ol>
         <li>Return a list of ALL movies, tv series and anime to the user
-            <br>Return data for movies:<p class="features-paragraphs">(title <span>{string}</span> <br /> description
+            <br>Return data for movies:<p class="features-paragraphs">title <span>{string}</span> <br /> description
                 <span>{string}</span> <br /> genre (name <span>{string}</span>, description <span>{string}</span>)
                 <br /> director (name <span>{string}</span>, bio <span>{string}</span>, birth year
                 <span>{string}</span>, death year <span>{string}</span>) <br /> image URL <span>{string}</span> <br />
@@ -26,14 +26,14 @@
         </li>
         <li>
             <br>for tv series and anime:
-            <p class="features-paragraphs"> (title <span>{string}</span> <br /> description <span>{string}</span> <br />
+            <p class="features-paragraphs"> title <span>{string}</span> <br /> description <span>{string}</span> <br />
                 genre (name <span>{string}</span>, description <span>{string}</span>) <br /> director (name
                 <span>{string}</span>, bio <span>{string}</span>, birth year <span>{string}</span>, death year
                 <span>{string}</span>) <br /> image URL <span>{string}</span> <br /> featured (true, false)
                 <span>{string}</span> <br /> actors <span>{array}</span> <br /> Rotten Tomatoes Audience rating
                 <span>{string}</span> <br /> IMDb rating <span>{string}</span> <br /> release date
-                <span>{string}</span>, <br /> episodes <span>{array}</span>, <br /> duration <span>{string}</span>
-                <br /> trailer url <span>{string}</span>)</p>
+                <span>{string}</span> <br /> episodes <span>{array}</span> <br /> duration <span>{string}</span>
+                <br /> trailer url <span>{string}</span></p>
         </li>
         <li>Return data about a genre (name, description) by name/title (e.g., “Thriller”)</li>
         <li>Return data about a director (bio, birth year, death year) by name</li>
@@ -44,12 +44,12 @@
         <li>Allow existing users to deregister</li>
     </ol>
     
-        <h3>Navigation</h3>
+        <h3 class="sections-headings">Navigation</h3>
     <a class="anchors" href="#user">To user section</a><br/>
     <a class="anchors" href="#movies">To movies section</a><br/>
     <a class="anchors" href="#tv">To tv series section</a><br/>
     <a class="anchors" href="#anime">To anime series section</a>
-    <h3 id="user">User Section</h3>
+    <h3 class="sections-headings" id="user">User Section</h3>
     <h4>To create a new user:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users</code></p>
     <div class="table-container"><table>
@@ -194,7 +194,7 @@
 
         </tr>
     </table></div>
-    <h3 id="movies">Movies Section</h3>
+    <h3 class="sections-headings" id="movies">Movies Section</h3>
     <h4>To return a list of ALL movies:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies</code></p>
     <div class="table-container"><table>
@@ -457,7 +457,7 @@
 
 
 
-    <h3 id="tv">TV series section</h3>
+    <h3 class="sections-headings" id="tv">TV series section</h3>
 
     <h4>To return a list of ALL tv series:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries</code></p>
@@ -724,7 +724,7 @@
 </div>
 
 
-    <h3 id="anime">Anime section</h3>
+    <h3 class="sections-headings" id="anime">Anime section</h3>
 
     <h4>To return a list of ALL anime series:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes</code></p>
@@ -1011,8 +1011,8 @@
         </tr>
     </table></div>
     <a class="anchors" href="#top">Back to top</a>
-    <footer>
-        <p>R3Play API<br/>
+    <footer >
+        <p class="footer-paragraph">R3Play API, 2023<br/>
         <a class="footer-links" target="_blank" href="https://github.com/yevheniiairapetian"><em>Yevhenii Airapetian</em></a><br/>
         <a class="footer-links" target="_blank" href="https://github.com/yevheniiairapetian/r3play">R3play API Github repository</a></p>
     </footer>

@@ -8,6 +8,18 @@ table{
     font-size: 18px;
 }
 
+.sections-headings{
+    background-color: green;
+}
+
+.footer-paragraph{
+    background-color: green;
+}
+
+.footer-paragraph a{
+    color: black;
+}
+
 .table-container{
     width:100%;
     overflow-x: auto;
@@ -39,6 +51,11 @@ h1, h2, h3, h4{
     background-color: slategray;
     color:white;
 }
+footer{
+    background-color: green;
+    padding: 10px 0;
+}
+
 .footer-links{
     color: green;
 }
