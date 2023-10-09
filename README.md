@@ -1,7 +1,7 @@
 # r3play
 
 ## Description
-This project contains a R3play web API allowing users to access information about different movies.
+This project contains a R3play web API allowing users to access information about different movies, tv series, and anime.
 
 ## Technologies Used
 - Javascript
@@ -13,10 +13,10 @@ This project contains a R3play web API allowing users to access information abou
 - Register user
 - Login user
 - Deregister user
-- Update user information
-- Access information about different movies, including movie description, release year, rating, list of actors, director, director birth/death year, bio etc.
-- Add a movie to favorites list
-- Delete a movie from favorites list
+- Update user information (username, password, email, birthday)
+- Access information about different movies, tv series and anime, including title, description, release year, rating (Rotten Tomatoes and IMDb), genre (name, description),list of actors, director (name, bio, birth/death year), duration etc and episodes for tv series and anime.
+- Add a movie, tv series, anime to favorites list
+- Delete a movie, tv series, anime from favorites list
 
 ## Project Dependencies
 - Body-parser
