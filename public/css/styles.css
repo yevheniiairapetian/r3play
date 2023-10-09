@@ -1,6 +1,18 @@
+*{
+    word-break: break-word;
+}
+
 table{
     margin:0 auto;
     overflow-x:auto;
+    font-size: 18px;
+}
+
+.table-container{
+    width:100%;
+    overflow-x: auto;
+    max-width: 1200px;
+    margin:0 auto;
 }
 
 tr:nth-child(odd){
@@ -16,6 +28,9 @@ tr:hover{
 
 td{
     padding: 10px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 h1, h2, h3, h4{
@@ -23,6 +38,42 @@ h1, h2, h3, h4{
     padding: 10px;
     background-color: slategray;
     color:white;
+}
+.footer-links{
+    color: green;
+}
+
+.footer-links:hover{
+    color: white;
+    transition: color 0.2s ease;
+}
+
+
+.anchors{
+    text-decoration: none;
+    border-radius:6px;
+    padding:14px;
+    display: inline-block;
+    font-size: 18px;
+    color:white;
+    background-color: slategray;
+    margin: 10px;
+}
+
+.anchors:hover{
+    opacity:0.8;
+    transition: opacity 0.2s ease;
+}
+
+.features-paragraphs{
+    word-break: break-word;
+    color: black;
+    font-size: 20px;
+}
+
+span{
+    color: green;
+    
 }
 
 h4{
@@ -47,6 +98,7 @@ ol, li{
 
 li{
     padding: 15px 0 10px 15px;
+    font-size: 20px;
    
 }
 

@@ -9,12 +9,32 @@
 </head>
 
 <body>
-    <h1 id="top"><em>R3:play app!</em> Documentation</h1>
+    <h1 id="top"><em>R3play API</em> Documentation</h1>
+    <h3>R3play API Github repository</h3>
+    <p>Please refer for more information to the <a target="_blank" href="https://github.com/yevheniiairapetian/r3play">R3play API Github repository</a></p>
     <h2>Features</h2>
     <ol>
-        <li>Return a list of ALL movies, tv series and anime to the user</li>
-        <li>Return data (description, genre (name, description), director (name, bio, birth year, death year), image URL, whether it’s featured or not) about a
-            single movie, tv series or anime by title to the user</li>
+        <li>Return a list of ALL movies, tv series and anime to the user
+            <br>Return data for movies:<p class="features-paragraphs">(title <span>{string}</span> <br /> description
+                <span>{string}</span> <br /> genre (name <span>{string}</span>, description <span>{string}</span>)
+                <br /> director (name <span>{string}</span>, bio <span>{string}</span>, birth year
+                <span>{string}</span>, death year <span>{string}</span>) <br /> image URL <span>{string}</span> <br />
+                featured (true, false) <span>{string}</span> <br /> actors <span>{array}</span> <br /> Rotten Tomatoes
+                Audience rating <span>{string}</span> <br /> IMDb rating <span>{string}</span> <br /> release date
+                <span>{string}</span> <br /> duration <span>{string}</span> <br /> trailer url <span>{string}</span>
+            </p><br />
+        </li>
+        <li>
+            <br>for tv series and anime:
+            <p class="features-paragraphs"> (title <span>{string}</span> <br /> description <span>{string}</span> <br />
+                genre (name <span>{string}</span>, description <span>{string}</span>) <br /> director (name
+                <span>{string}</span>, bio <span>{string}</span>, birth year <span>{string}</span>, death year
+                <span>{string}</span>) <br /> image URL <span>{string}</span> <br /> featured (true, false)
+                <span>{string}</span> <br /> actors <span>{array}</span> <br /> Rotten Tomatoes Audience rating
+                <span>{string}</span> <br /> IMDb rating <span>{string}</span> <br /> release date
+                <span>{string}</span>, <br /> episodes <span>{array}</span>, <br /> duration <span>{string}</span>
+                <br /> trailer url <span>{string}</span>)</p>
+        </li>
         <li>Return data about a genre (name, description) by name/title (e.g., “Thriller”)</li>
         <li>Return data about a director (bio, birth year, death year) by name</li>
         <li>Allow new users to register</li>
@@ -23,14 +43,161 @@
         <li>Allow users to remove a movie, tv series, anime from their list of favorites</li>
         <li>Allow existing users to deregister</li>
     </ol>
+    
+        <h3>Navigation</h3>
+    <a class="anchors" href="#user">To user section</a><br/>
+    <a class="anchors" href="#movies">To movies section</a><br/>
+    <a class="anchors" href="#tv">To tv series section</a><br/>
+    <a class="anchors" href="#anime">To anime series section</a>
+    <h3 id="user">User Section</h3>
+    <h4>To create a new user:</h4>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users</code></p>
+    <div class="table-container"><table>
+        <tr>
+            <td>Response formats</td>
+            <td>JSON</td>
+        </tr>
+        <tr>
+            <td>Request Metod Type</td>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <td>Query parameters</td>
+            <td>Enter the user name, password, email (all required) and date of birthday (optional) as JSON object</td>
+        </tr>
+        <tr>
+            <td>Example request</td>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users</code><br>
+                <code><em>JSON request:</em><br>{
+                    "Username": "Johny",<br>
+                    "Password": "12345",<br>
+                    "Email": "johny321@gmail.com"
+                } </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Example response</td>
+            <td><em>{
+                    "Username": "Johny",<br>
+                    "Password": "12345",<br>
+                    "Email": "johny321@gmail.com",<br>
+                    "FavoriteMovies": [],<br>
+                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
+                    "__v": 0
+                    }</em></td>
 
-    <a style="color: blue; font-size:18px;" href="#movies">To movies section</a><br/>
-    <a style="color: blue; font-size:18px;" href="#tv">To tv series section</a><br/>
-    <a style="color: blue; font-size:18px;" href="#anime">To anime series section</a>
+        </tr>
+    </table>
+</div>
+    <h4>To login</h4>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/login</code></p>
+    <div class="table-container"><table>
+        <tr>
+            <td>Response formats</td>
+            <td>JSON</td>
+        </tr>
+        <tr>
+            <td>Request Metod Type</td>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <td>Query parameters</td>
+            <td>Enter the user name and password in the login form along with the personal token generated for the user
+            </td>
+        </tr>
+        <tr>
+            <td>Example request</td>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/login</code><br>
+                <code><em>JSON request:</em><br>{
+                    "Username": "Johny",<br>
+                    "Password": "12345",<br>
+              } </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Example response</td>
+            <td><em>{
+                    "Username": "Johny",<br>
+                    "Password": "12345",<br>
+                    "Email": "johny321@gmail.com",<br>
+                    "FavoriteMovies": [],<br>
+                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
+                    "__v": 0
+                    }</em></td>
 
-    <h4 id="movies">To return a list of ALL movies:</h4>
+        </tr>
+    </table>
+</div>
+    <h4>To update a user name:</h4>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
+    <div class="table-container"><table>
+        <tr>
+            <td>Response formats</td>
+            <td>JSON</td>
+        </tr>
+        <tr>
+            <td>Request Metod Type</td>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <td>Query parameters</td>
+            <td>Update the user name, password, email and/or date of birthday as JSON object</td>
+        </tr>
+        <tr>
+            <td>Example request</td>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny</code><br>
+                <code><em>JSON request:</em><br>{
+                    "Username": "Johny1",<br>
+                    "Password": "1232245",<br>
+                    "Email": "johny321@gmail.com"
+                    
+                }  </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Example response</td>
+            <td><em>{
+                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
+                    "Username": "Johny1",<br>
+                    "Password": "1232245",<br>
+                    "Email": "johny321@gmail.com",<br>
+                    "FavoriteMovies": [],<br>
+                    "__v": 0
+                    }</em></td>
+
+        </tr>
+    </table></div>
+    <h4>To delete a user:</h4>
+    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
+    <div class="table-container"><table>
+        <tr>
+            <td>Response formats</td>
+            <td>Text message</td>
+        </tr>
+        <tr>
+            <td>Request Metod Type</td>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <td>Query parameters</td>
+            <td>Enter the user name in the query</td>
+        </tr>
+        <tr>
+            <td>Example request</td>
+            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1</code>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Example response</td>
+            <td><em>Johny1 was deleted.</em></td>
+
+        </tr>
+    </table></div>
+    <h3 id="movies">Movies Section</h3>
+    <h4>To return a list of ALL movies:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -67,7 +234,8 @@
                     "Title": "Big",<br>
                     "Description": "Big is a 1988 American fantasy comedy-drama film directed by Penny Marshall and
                     stars Tom Hanks, Elizabeth Perkins, David Moscow, John Heard, and Robert Loggia.",
-                    "ImagePath": "https://1.bp.blogspot.com/-3Dg-G2PvVaU/Wdj6qCZixRI/AAAAAAAAEoI/FJwSvq-0yn4rJ9c0x0pVU58Tq1FAgS0AACLcBGAs/s1600/poster.jpg",<br>
+                    "ImagePath":
+                    "https://1.bp.blogspot.com/-3Dg-G2PvVaU/Wdj6qCZixRI/AAAAAAAAEoI/FJwSvq-0yn4rJ9c0x0pVU58Tq1FAgS0AACLcBGAs/s1600/poster.jpg",<br>
                     "Featured": false,<br>
                     "Actors": [<br>
                     "Tom Hanks",<br>
@@ -80,10 +248,10 @@
                     }</em></td>
         </tr>
     </table>
-
+</div>
     <h4>To return a specific movie by name:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/:MovieTitle</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -125,7 +293,8 @@
                     "Title": "Inception",<br>
                     "Description": "Inception is a 2010 science finction action film written and directed by Christopher
                     Nolan. The film stars Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt and others",
-                    "ImagePath": "http://2.bp.blogspot.com/-xFYEth1IzNg/T7aRDDExXfI/AAAAAAAABxs/UUKfDL0Tgw0/s1600/inception-poster.jpg",<br>
+                    "ImagePath":
+                    "http://2.bp.blogspot.com/-xFYEth1IzNg/T7aRDDExXfI/AAAAAAAABxs/UUKfDL0Tgw0/s1600/inception-poster.jpg",<br>
                     "Featured": true,<br>
                     "Actors": [<br>
                     "Leonardo DiCaprio",<br>
@@ -142,10 +311,10 @@
                     "ReleaseDate": "2010-01-01T00:00:00.000Z"
                     }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return a movie genre name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies/:genres/:GenreName</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -177,11 +346,11 @@
                     designed to make the audience laugh in amusement"
                     }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return a movie director's name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/movies/directors/:DirectorName</code>
     </p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -194,7 +363,8 @@
             <td>Query parameters</td>
             <td>Genre of the movie in the format <code>movies/:directors/:DirectorName</code> where
                 <code>:DirectorName</code> is
-                replaced with the desired movie director's name</td>
+                replaced with the desired movie director's name
+            </td>
         </tr>
         <tr>
             <td>Example request</td>
@@ -212,152 +382,10 @@
 
         </tr>
     </table>
-    <h4>To create a new user:</h4>
-    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users</code></p>
-    <table>
-        <tr>
-            <td>Response formats</td>
-            <td>JSON</td>
-        </tr>
-        <tr>
-            <td>Request Metod Type</td>
-            <td>POST</td>
-        </tr>
-        <tr>
-            <td>Query parameters</td>
-            <td>Enter the user name, password, email (all required) and date of birthday (optional) as JSON object</td>
-        </tr>
-        <tr>
-            <td>Example request</td>
-            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users</code><br>
-                <code><em>JSON request:</em><br>{
-                    "Username": "Johny",<br>
-                    "Password": "12345",<br>
-                    "Email": "johny321@gmail.com"
-                } </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Example response</td>
-            <td><em>{
-                    "Username": "Johny",<br>
-                    "Password": "12345",<br>
-                    "Email": "johny321@gmail.com",<br>
-                    "FavoriteMovies": [],<br>
-                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
-                    "__v": 0
-                    }</em></td>
-
-        </tr>
-    </table>
-
-    <h4>To login</h4>
-    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/login</code></p>
-    <table>
-        <tr>
-            <td>Response formats</td>
-            <td>JSON</td>
-        </tr>
-        <tr>
-            <td>Request Metod Type</td>
-            <td>POST</td>
-        </tr>
-        <tr>
-            <td>Query parameters</td>
-            <td>Enter the user name and password in the login form along with the personal token generated for the user</td>
-        </tr>
-        <tr>
-            <td>Example request</td>
-            <td><code>https://r3play-934f9ea5664d.herokuapp.com/login</code><br>
-                <code><em>JSON request:</em><br>{
-                    "Username": "Johny",<br>
-                    "Password": "12345",<br>
-              } </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Example response</td>
-            <td><em>{
-                    "Username": "Johny",<br>
-                    "Password": "12345",<br>
-                    "Email": "johny321@gmail.com",<br>
-                    "FavoriteMovies": [],<br>
-                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
-                    "__v": 0
-                    }</em></td>
-
-        </tr>
-    </table>
-
-    <h4>To update a user name:</h4>
-    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
-    <table>
-        <tr>
-            <td>Response formats</td>
-            <td>JSON</td>
-        </tr>
-        <tr>
-            <td>Request Metod Type</td>
-            <td>PUT</td>
-        </tr>
-        <tr>
-            <td>Query parameters</td>
-            <td>Update the user name, password, email and/or date of birthday as JSON object</td>
-        </tr>
-        <tr>
-            <td>Example request</td>
-            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny</code><br>
-                <code><em>JSON request:</em><br>{
-                    "Username": "Johny1",<br>
-                    "Password": "1232245",<br>
-                    "Email": "johny321@gmail.com"
-                    
-                }  </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Example response</td>
-            <td><em>{
-                    "_id": "64c2c3acc5aaaf1c491bdb6e",<br>
-                    "Username": "Johny1",<br>
-                    "Password": "1232245",<br>
-                    "Email": "johny321@gmail.com",<br>
-                    "FavoriteMovies": [],<br>
-                    "__v": 0
-                    }</em></td>
-
-        </tr>
-    </table>
-    <h4>To delete a user:</h4>
-    <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id</code></p>
-    <table>
-        <tr>
-            <td>Response formats</td>
-            <td>Text message</td>
-        </tr>
-        <tr>
-            <td>Request Metod Type</td>
-            <td>DELETE</td>
-        </tr>
-        <tr>
-            <td>Query parameters</td>
-            <td>Enter the user name in the query</td>
-        </tr>
-        <tr>
-            <td>Example request</td>
-            <td><code>https://r3play-934f9ea5664d.herokuapp.com/users/Johny1</code>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Example response</td>
-            <td><em>Johny1 was deleted.</em></td>
-
-        </tr>
-    </table>
+</div>
     <h4>To add a movie to a favorites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:movies/:MovieID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -390,10 +418,10 @@
                     }</em></td>
 
         </tr>
-    </table>
+    </table></div>
     <h4>To delete a movie from a favotites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:movies/:MovieID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -425,15 +453,15 @@
 
         </tr>
     </table>
+</div>
 
 
 
+    <h3 id="tv">TV series section</h3>
 
-
-
-    <h4 id="tv">To return a list of ALL tv series:</h4>
+    <h4>To return a list of ALL tv series:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -457,17 +485,26 @@
             <td><em>{
                     "Genre": {<br>
                     "Name": "Sci-Fi",<br>
-                    "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration etc."
+                    "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals
+                    with imaginative and futuristic concepts such as advanced science and technology, space exploration
+                    etc."
                     },<br>
                     "Director": {<br>
                     "Name": "Kate Herron",<br>
-                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for her female-led comedies. She directed and executive produced the first season of the Disney+ series Loki.",
+                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for
+                    her female-led comedies. She directed and executive produced the first season of the Disney+ series
+                    Loki.",
                     "Birth": "1987",<br>
                     },
                     "_id": "64ee580ded1d0c5cacbe262d",<br>
                     "Title": "Loki (Season 1)",<br>
-                    "Description": "Loki is an American television series created by Michael Waldron for the streaming service Disney+, based on Marvel Comics featuring the character of the same name. It is the third television series in the Marvel Cinematic Universe (MCU) produced by Marvel Studios, sharing continuity with the films of the franchise. The series takes place after the events of the film Avengers: Endgame (2019), in which an alternate version of Loki created a new timeline.",
-                    "ImagePath": "https://1.bp.blogspot.com/-7oJmXQyWS-4/YNMaSaIL8YI/AAAAAAABX-c/ZE9QIgy-g-EU2KRya_Dy6mwV81Fr2iJvACLcBGAsYHQ/s1500/Lady%2BLoki%2B1.jpg",<br>
+                    "Description": "Loki is an American television series created by Michael Waldron for the streaming
+                    service Disney+, based on Marvel Comics featuring the character of the same name. It is the third
+                    television series in the Marvel Cinematic Universe (MCU) produced by Marvel Studios, sharing
+                    continuity with the films of the franchise. The series takes place after the events of the film
+                    Avengers: Endgame (2019), in which an alternate version of Loki created a new timeline.",
+                    "ImagePath":
+                    "https://1.bp.blogspot.com/-7oJmXQyWS-4/YNMaSaIL8YI/AAAAAAABX-c/ZE9QIgy-g-EU2KRya_Dy6mwV81Fr2iJvACLcBGAsYHQ/s1500/Lady%2BLoki%2B1.jpg",<br>
                     "Featured": false,<br>
                     "Actors": [<br>
                     "Tom Hiddleston",<br>
@@ -479,10 +516,10 @@
                     }</em></td>
         </tr>
     </table>
-
+</div>
     <h4>To return a specific tv series by name:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/:tvID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -493,7 +530,8 @@
         </tr>
         <tr>
             <td>Query parameters</td>
-            <td>Name of the tv series in the format <code>tvseries/:TVseiesTitle</code> where <code>:TVseriesTitle</code> is
+            <td>Name of the tv series in the format <code>tvseries/:TVseiesTitle</code> where
+                <code>:TVseriesTitle</code> is
                 replaced with the
                 desired tv series title</td>
         </tr>
@@ -506,20 +544,29 @@
         <tr>
             <td>Example response</td>
             <td><em>
-                {
+                    {
                     "Genre": {<br>
                     "Name": "Sci-Fi",<br>
-                    "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration etc."
+                    "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals
+                    with imaginative and futuristic concepts such as advanced science and technology, space exploration
+                    etc."
                     },<br>
                     "Director": {<br>
                     "Name": "Kate Herron",<br>
-                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for her female-led comedies. She directed and executive produced the first season of the Disney+ series Loki.",
+                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for
+                    her female-led comedies. She directed and executive produced the first season of the Disney+ series
+                    Loki.",
                     "Birth": "1987",<br>
                     },
                     "_id": "64ee580ded1d0c5cacbe262d",<br>
                     "Title": "Loki (Season 1)",<br>
-                    "Description": "Loki is an American television series created by Michael Waldron for the streaming service Disney+, based on Marvel Comics featuring the character of the same name. It is the third television series in the Marvel Cinematic Universe (MCU) produced by Marvel Studios, sharing continuity with the films of the franchise. The series takes place after the events of the film Avengers: Endgame (2019), in which an alternate version of Loki created a new timeline.",
-                    "ImagePath": "https://1.bp.blogspot.com/-7oJmXQyWS-4/YNMaSaIL8YI/AAAAAAABX-c/ZE9QIgy-g-EU2KRya_Dy6mwV81Fr2iJvACLcBGAsYHQ/s1500/Lady%2BLoki%2B1.jpg",<br>
+                    "Description": "Loki is an American television series created by Michael Waldron for the streaming
+                    service Disney+, based on Marvel Comics featuring the character of the same name. It is the third
+                    television series in the Marvel Cinematic Universe (MCU) produced by Marvel Studios, sharing
+                    continuity with the films of the franchise. The series takes place after the events of the film
+                    Avengers: Endgame (2019), in which an alternate version of Loki created a new timeline.",
+                    "ImagePath":
+                    "https://1.bp.blogspot.com/-7oJmXQyWS-4/YNMaSaIL8YI/AAAAAAABX-c/ZE9QIgy-g-EU2KRya_Dy6mwV81Fr2iJvACLcBGAsYHQ/s1500/Lady%2BLoki%2B1.jpg",<br>
                     "Featured": false,<br>
                     "Actors": [<br>
                     "Tom Hiddleston",<br>
@@ -530,10 +577,10 @@
                     "ReleaseDate": "2021-01-01T00:00:00.000Z"
                     }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return a tv series genre name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/:genres/:GenreName</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -560,15 +607,17 @@
             <td>Example response</td>
             <td><em>
                     {
-                        "Name": "Sci-Fi",<br>
-                        "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration etc."
-                        }</em></td>
+                    "Name": "Sci-Fi",<br>
+                    "Description": "Science fiction (or Sci-Fi) is a genre of speculative fiction, which typically deals
+                    with imaginative and futuristic concepts such as advanced science and technology, space exploration
+                    etc."
+                    }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return a tv series director's name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/directors/:DirectorName</code>
     </p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -581,7 +630,8 @@
             <td>Query parameters</td>
             <td>Genre of the tv series in the format <code>tv series/:directors/:DirectorName</code> where
                 <code>:DirectorName</code> is
-                replaced with the desired tv series director's name</td>
+                replaced with the desired tv series director's name
+            </td>
         </tr>
         <tr>
             <td>Example request</td>
@@ -593,15 +643,17 @@
             <td>Example response</td>
             <td><em>{
                     "Name": "Kate%20Herron",<br>
-                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for her female-led comedies. She directed and executive produced the first season of the Disney+ series Loki."
+                    "Bio": "Kate Herron (born 1987/1988) is an English director, writer, and producer. She is known for
+                    her female-led comedies. She directed and executive produced the first season of the Disney+ series
+                    Loki."
                     }</em></td>
 
         </tr>
-    
-    </table>
+
+    </table></div>
     <h4>To add a tv series to a favorites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:tvseries/:tvID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -634,10 +686,10 @@
                     }</em></td>
 
         </tr>
-    </table>
+    </table></div>
     <h4>To delete a tvseries from a favotites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:tvseries/:tvID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -669,14 +721,14 @@
 
         </tr>
     </table>
+</div>
 
 
+    <h3 id="anime">Anime section</h3>
 
-
-
-    <h4 id="anime">To return a list of ALL anime series:</h4>
+    <h4>To return a list of ALL anime series:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -700,16 +752,33 @@
             <td><em>{
                     "Genre": {<br>
                     "Name": "Cyberpunk",<br>
-                    "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture, technology, and the sexual revolution while avoiding the utopian tendencies of earlier science fiction."
+                    "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that
+                    tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and
+                    scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal
+                    collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement
+                    of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John
+                    Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture,
+                    technology, and the sexual revolution while avoiding the utopian tendencies of earlier science
+                    fiction."
                     },<br>
                     "Director": {<br>
                     "Name": "Shūkō Murase",<br>
-                    "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and animator.[1] A member of Sunrise, he is noted for contributing the character designs and key animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter Robin.",
+                    "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and
+                    animator.[1] A member of Sunrise, he is noted for contributing the character designs and key
+                    animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main
+                    character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter
+                    Robin.",
                     "Birth": "1964",<br>
                     },
                     "_id": "651617b581bacee8dbbc820d",<br>
                     "Title": "Ergo Proxy",<br>
-                    "Description": "Ergo Proxy is a Japanese cyberpunk anime television series, produced by Manglobe, directed by Shūkō Murase and written by Dai Satō. The series ran for 23 episodes from February to August 2006 on the Wowow satellite network. It is set in a post-apocalyptic future where humans and AutoReiv androids coexist peacefully until a virus gives the androids self-awareness, causing them to commit a series of murders. Inspector Re-L Mayer is assigned to investigate, discovering a more complicated plot behind it that involves a humanoid species known as "Proxy" who are the subject of secret government experiments.",
+                    "Description": "Ergo Proxy is a Japanese cyberpunk anime television series, produced by Manglobe,
+                    directed by Shūkō Murase and written by Dai Satō. The series ran for 23 episodes from February to
+                    August 2006 on the Wowow satellite network. It is set in a post-apocalyptic future where humans and
+                    AutoReiv androids coexist peacefully until a virus gives the androids self-awareness, causing them
+                    to commit a series of murders. Inspector Re-L Mayer is assigned to investigate, discovering a more
+                    complicated plot behind it that involves a humanoid species known as "Proxy" who are the subject of
+                    secret government experiments.",
                     "ImagePath": "https://cafeanimelair2.files.wordpress.com/2020/07/ergo-proxy.png?w=1272&h=716",<br>
                     "Featured": false,<br>
                     "Actors": [<br>
@@ -722,10 +791,10 @@
                     }</em></td>
         </tr>
     </table>
-
+</div>
     <h4>To return a specific anime series by name:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes/:AnimeID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -749,19 +818,36 @@
         <tr>
             <td>Example response</td>
             <td><em>
-                {
+                    {
                     "Genre": {<br>
                     "Name": "Cyberpunk",<br>
-                    "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture, technology, and the sexual revolution while avoiding the utopian tendencies of earlier science fiction."
+                    "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that
+                    tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and
+                    scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal
+                    collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement
+                    of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John
+                    Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture,
+                    technology, and the sexual revolution while avoiding the utopian tendencies of earlier science
+                    fiction."
                     },<br>
                     "Director": {<br>
                     "Name": "Shūkō Murase",<br>
-                    "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and animator.[1] A member of Sunrise, he is noted for contributing the character designs and key animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter Robin.",
+                    "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and
+                    animator.[1] A member of Sunrise, he is noted for contributing the character designs and key
+                    animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main
+                    character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter
+                    Robin.",
                     "Birth": "1964",<br>
                     },
                     "_id": "651617b581bacee8dbbc820d",<br>
                     "Title": "Ergo Proxy",<br>
-                    "Description": "Ergo Proxy is a Japanese cyberpunk anime television series, produced by Manglobe, directed by Shūkō Murase and written by Dai Satō. The series ran for 23 episodes from February to August 2006 on the Wowow satellite network. It is set in a post-apocalyptic future where humans and AutoReiv androids coexist peacefully until a virus gives the androids self-awareness, causing them to commit a series of murders. Inspector Re-L Mayer is assigned to investigate, discovering a more complicated plot behind it that involves a humanoid species known as "Proxy" who are the subject of secret government experiments.",
+                    "Description": "Ergo Proxy is a Japanese cyberpunk anime television series, produced by Manglobe,
+                    directed by Shūkō Murase and written by Dai Satō. The series ran for 23 episodes from February to
+                    August 2006 on the Wowow satellite network. It is set in a post-apocalyptic future where humans and
+                    AutoReiv androids coexist peacefully until a virus gives the androids self-awareness, causing them
+                    to commit a series of murders. Inspector Re-L Mayer is assigned to investigate, discovering a more
+                    complicated plot behind it that involves a humanoid species known as "Proxy" who are the subject of
+                    secret government experiments.",
                     "ImagePath": "https://cafeanimelair2.files.wordpress.com/2020/07/ergo-proxy.png?w=1272&h=716",<br>
                     "Featured": false,<br>
                     "Actors": [<br>
@@ -773,10 +859,10 @@
                     "ReleaseDate": "2006-01-01T00:00:00.000Z"
                     }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return an anime series genre name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/animes/:genres/:GenreName</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -803,15 +889,22 @@
             <td>Example response</td>
             <td><em>
                     {
-                        "Name": "Cyberpunk",<br>
-                        "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture, technology, and the sexual revolution while avoiding the utopian tendencies of earlier science fiction."
-                        }</em></td>
+                    "Name": "Cyberpunk",<br>
+                    "Description": "Cyberpunk is a subgenre of science fiction in a dystopian futuristic setting that
+                    tends to focus on a "combination of lowlife and high tech", featuring futuristic technological and
+                    scientific achievements, such as artificial intelligence and cyberware, juxtaposed with societal
+                    collapse, dystopia or decay.[2] Much of cyberpunk is rooted in the New Wave science fiction movement
+                    of the 1960s and 1970s, when writers like Philip K. Dick, Michael Moorcock, Roger Zelazny, John
+                    Brunner, J. G. Ballard, Philip José Farmer and Harlan Ellison examined the impact of drug culture,
+                    technology, and the sexual revolution while avoiding the utopian tendencies of earlier science
+                    fiction."
+                    }</em></td>
         </tr>
-    </table>
+    </table></div>
     <h4>To return an anime series director's name and description:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/tvseries/directors/:DirectorName</code>
     </p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>JSON</td>
@@ -824,7 +917,8 @@
             <td>Query parameters</td>
             <td>Genre of the anime series in the format <code>animes/:directors/:DirectorName</code> where
                 <code>:DirectorName</code> is
-                replaced with the desired anime series director's name</td>
+                replaced with the desired anime series director's name
+            </td>
         </tr>
         <tr>
             <td>Example request</td>
@@ -835,16 +929,20 @@
         <tr>
             <td>Example response</td>
             <td><em>{
-                "Name": "Shūkō Murase",<br>
-                "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and animator.[1] A member of Sunrise, he is noted for contributing the character designs and key animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter Robin.",
-                "Birth": "1964",}</em></td>
+                    "Name": "Shūkō Murase",<br>
+                    "Bio": "Shūkō Murase (村瀬 修功, Murase Shūkō, born May 31, 1964) is a Japanese anime director and
+                    animator.[1] A member of Sunrise, he is noted for contributing the character designs and key
+                    animation to New Mobile Report Gundam Wing and Argento Soma. In 2000, he contributed the main
+                    character designs to Final Fantasy IX. He made his directorial debut in 2002 with Witch Hunter
+                    Robin.",
+                    "Birth": "1964",}</em></td>
 
         </tr>
-    
-    </table>
+
+    </table></div>
     <h4>To add an anime series to a favorites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:animes/:AnimeID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -877,10 +975,10 @@
                     }</em></td>
 
         </tr>
-    </table>
+    </table></div>
     <h4>To delete an anime series from a favotites list:</h4>
     <p>Use the resource URl: <code>https://r3play-934f9ea5664d.herokuapp.com/users/:id/:animes/:AnimeID</code></p>
-    <table>
+    <div class="table-container"><table>
         <tr>
             <td>Response formats</td>
             <td>Text message</td>
@@ -911,8 +1009,13 @@
                     }</em></td>
 
         </tr>
-    </table>
-    <a style="color: blue; font-size:18px;" href="#top">Back to top</a>
+    </table></div>
+    <a class="anchors" href="#top">Back to top</a>
+    <footer>
+        <p>R3Play API<br/>
+        <a class="footer-links" target="_blank" href="https://github.com/yevheniiairapetian"><em>Yevhenii Airapetian</em></a><br/>
+        <a class="footer-links" target="_blank" href="https://github.com/yevheniiairapetian/r3play">R3play API Github repository</a></p>
+    </footer>
 </body>
 
 </html>
