@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+/**
+ * Movie Schema object
+ * @name MovieSchema
+ */
+let movieSchema = mongoose.Schema({
+  Title: { type: String, required: true },
+  Description: { type: String, required: true },
+  Genre: {
+    Name: String,
+    Description: String
+  },
+  Director: {
+    Name: String,
+    Bio: String
+  },
+  ImagePath: String,
+  Featured: Boolean,
+  Actors: [String],
+  InterestingFacts: [String],
+  Rating: String,
+  ReleaseDate: Date,
+  Duration: String,
+  IMDbRating: String,
+  Trailer: String
+
+});
+
+/**
+ * TV series Schema object
+ * @name TVSchema
+ */
+let TVseriesSchema = mongoose.Schema({
+  Title: { type: String, required: true },
+  Description: { type: String, required: true },
+  Genre: {
+    Name: String,
+    Description: String
+  },
+  Director: {
+    Name: String,
+    Bio: String,
+    Birth: String,
+    Death: String,
+  },
+  ImagePath: String,
+  Actors: [String],
+  Featured: Boolean,
+  Rating: String,
+  ReleaseDate: Date,
+  Season: [String],
+  Trailer: String,
+  IMDbRating: String,
+  Duration: String,
+
+});
+
+/**
+ * Anime Schema object
+ * @name AnimeSchema
+ */
+let AnimeSchema = mongoose.Schema({
+  Title: { type: String, required: true },
+  Description: { type: String, required: true },
+  Season: [String],
+  Genre: {
+    Name: String,
+    Description: String
+  },
+  Director: {
+    Name: String,
+    Bio: String
+  },
+  ImagePath: String,
+  Featured: Boolean,
+  Actors: [String],
+  Rating: String,
+  Duration: String,
+  IMDbRating: String,
+  ReleaseDate: Date,
+  Trailer: String
+
+});
+
+let userSchema = mongoose.Schema({
+  Username: { type: String, required: true, unique: true },
+  Password: { type: String, required: true },
+  Email: { type: String, required: true, unique: true },
+  Birthday: Date,
+  FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', ref: 'TVseries', ref: 'Anime' }]
+});
+
+userSchema.statics.hashPassword = (password) => {
+  return bcrypt.hashSync(password, 10);
+};
+
+userSchema.methods.validatePassword = function (password) {
+  return bcrypt.compareSync(password, this.Password);
+};
+
+let Movie = mongoose.model('Movie', movieSchema);
+let Anime = mongoose.model('Anime', AnimeSchema);
+let TVseries = mongoose.model('TVseries', TVseriesSchema);
+let User = mongoose.model('User', userSchema);
+
+module.exports.Movie = Movie;
+module.exports.Anime = Anime;
+module.exports.TVseries = TVseries;
+module.exports.User = User;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AnimeSchema">AnimeSchema</a></li><li><a href="global.html#MovieSchema">MovieSchema</a></li><li><a href="global.html#TVSchema">TVSchema</a></li><li><a href="global.html#deleteAnime">deleteAnime</a></li><li><a href="global.html#deleteMovie">deleteMovie</a></li><li><a href="global.html#deleteTVSeries">deleteTVSeries</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#getAnimeDirector">getAnimeDirector</a></li><li><a href="global.html#getAnimeGenre">getAnimeGenre</a></li><li><a href="global.html#getAnimeTitle">getAnimeTitle</a></li><li><a href="global.html#getAnimes">getAnimes</a></li><li><a href="global.html#getDocumentation">getDocumentation</a></li><li><a href="global.html#getMovieDirector">getMovieDirector</a></li><li><a href="global.html#getMovieGenre">getMovieGenre</a></li><li><a href="global.html#getMovieTitle">getMovieTitle</a></li><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#getTVDirector">getTVDirector</a></li><li><a href="global.html#getTVGenre">getTVGenre</a></li><li><a href="global.html#getTVSeries">getTVSeries</a></li><li><a href="global.html#getTVTitle">getTVTitle</a></li><li><a href="global.html#loginUserAndToken">loginUserAndToken</a></li><li><a href="global.html#postAnime">postAnime</a></li><li><a href="global.html#postMovie">postMovie</a></li><li><a href="global.html#postTvSeries">postTvSeries</a></li><li><a href="global.html#postUser">postUser</a></li><li><a href="global.html#putUser">putUser</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Oct 19 2023 17:29:04 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

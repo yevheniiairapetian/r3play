@@ -1,5 +1,12 @@
+
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+
+/**
+ * Movie Schema object
+ * @name MovieSchema
+ */
 let movieSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
@@ -23,6 +30,10 @@ let movieSchema = mongoose.Schema({
 
 });
 
+/**
+ * TV series Schema object
+ * @name TVSchema
+ */
 let TVseriesSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
@@ -48,6 +59,10 @@ let TVseriesSchema = mongoose.Schema({
 
 });
 
+/**
+ * Anime Schema object
+ * @name AnimeSchema
+ */
 let AnimeSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
