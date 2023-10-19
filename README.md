@@ -23,6 +23,7 @@ This project contains a R3play web API allowing users to access information abou
 - Express
 - Mongoose
 - Cors
+- JSDOC
 - _Please find other project dependencies in the package.json file_
   
 ## Live Version
