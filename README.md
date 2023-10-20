@@ -1,29 +1,41 @@
 # r3play
 
 ## Description
-This project contains a R3play web API allowing users to access information about different movies, tv series, and anime.
+This project contains an R3play web API that allows users to access information about different movies, TV series, and anime. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App [here](https://github.com/yevheniiairapetian/r3play-client)
 
 ## Technologies Used
 - Javascript
 - Node.js
 - Express
+- Mongoose
+- Body Parser
+- MongoDB
+- Heroku
+- Postman
+- UUID
+- _Please see the package.json file for other project dependecnies_
 
 
 ## Features
-- Register user
-- Login user
+#### Allows to
+- Register a user with a secure password
+- Log in as a user
 - Deregister user
 - Update user information (username, password, email, birthday)
-- Access information about different movies, tv series and anime, including title, description, release year, rating (Rotten Tomatoes and IMDb), genre (name, description),list of actors, director (name, bio, birth/death year), duration etc and episodes for tv series and anime.
-- Add a movie, tv series, anime to favorites list
-- Delete a movie, tv series, anime from favorites list
+- Access information about different movies, TV series, and anime, including title, description, release year, rating (Rotten Tomatoes Audience and IMDb), genre (name, description), list of actors, director (name, bio, birth/death year), duration, interesting facts, etc and episodes for TV series and anime.
+- Add a movie, TV series, or anime to your favorites list (single FavoriteMovies array)
+- Delete a movie, TV series, or anime from the favorites list (single FavoriteMovies array)
 
 ## Project Dependencies
-- Body-parser
-- Express
-- Mongoose
-- Cors
-- JSDOC
+- Body-parser as a parsing middleware
+- Express/Node.js for the backend
+- Mongoose for the schemas
+- Cors for enabling the CORS policies
+- Postman for testing HTTP requests and responses
+- JSDOC for documentation
+- UUID for generating unique IDs
+- Heroku for deployment
+- Mongo DB as a database
 - _Please find other project dependencies in the package.json file_
   
 ## Live Version
