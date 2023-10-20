@@ -1,7 +1,7 @@
 # r3play
 
 ## Description
-This project contains an R3play web API that allows users to access information about different movies, TV series, and anime. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App [here](https://github.com/yevheniiairapetian/r3play-client)
+This project contains an R3play web API that allows users to access information about different movies, TV series, and anime from a MongoDB Database. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App [here](https://github.com/yevheniiairapetian/r3play-client)
 
 ## Technologies Used
 - Javascript
