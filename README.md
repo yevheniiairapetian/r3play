@@ -1,7 +1,7 @@
 # r3play
 
 ## Description
-This project contains an R3play web API that allows users to access information about different movies, TV series, and anime from a MongoDB Database. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App [here](https://github.com/yevheniiairapetian/r3play-client)
+This project contains an R3play web API that allows users to access information about different movies, TV series, and anime from a MongoDB Database. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App front-end [here](https://github.com/yevheniiairapetian/r3play-client)
 
 ## Technologies Used
 - Javascript
@@ -17,12 +17,38 @@ This project contains an R3play web API that allows users to access information 
 
 
 ## Features
-#### Allows to
-- Register a user with a secure password
+### Allows to:
+#### User Features
+- Register a user with a secure hashed password
 - Log in as a user
 - Deregister user
 - Update user information (username, password, email, birthday)
-- Access information about different movies, TV series, and anime, including title, description, release year, rating (Rotten Tomatoes Audience and IMDb), genre (name, description), list of actors, director (name, bio, birth/death year), duration, interesting facts, etc and episodes for TV series and anime.
+#### Movie features
+##### Access information about different movies including 
+- Title
+- Description
+- Genre (name and description)
+- Director (name, bio, birth year, and death year)
+- Release year
+- Rating (Rotten Tomatoes Audience and IMDb) 
+- List of actors
+- Duration
+- Interesting facts
+- Etc
+#### Anime and TV series features
+##### Access information about different anime and TV series including 
+- Title
+- Description
+- Episodes
+- Genre (name and description)
+- Director (name, bio, birth year, and death year)
+- Release year
+- Rating (Rotten Tomatoes Audience and IMDb) 
+- List of actors
+- Duration
+- Interesting facts
+- Etc
+#### Movie, anime and TV series features
 - Add a movie, TV series, or anime to your favorites list (single FavoriteMovies array)
 - Delete a movie, TV series, or anime from the favorites list (single FavoriteMovies array)
 
