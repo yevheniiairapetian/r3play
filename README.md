@@ -66,6 +66,7 @@ This project contains an R3play web API that allows users to access information 
       
 ## Project In Use Preview
 _Please click on the video below to watch it_   
+
 [![Watch the video](https://i.ibb.co/C1mSB2M/2023-10-22-16h13-32.png)](https://streamable.com/axny8v)
 
 ## Live Version
