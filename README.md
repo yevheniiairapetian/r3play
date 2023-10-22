@@ -63,9 +63,7 @@ This project contains an R3play web API that allows users to access information 
 - Heroku for deployment
 - Mongo DB as a database
 - _Please find other project dependencies in the package.json file_
-
-## Project Screenshot
-<img src="https://i.ibb.co/C1mSB2M/2023-10-22-16h13-32.png" alt="Project 3 Screenshot" border="0">      
+      
 ## Project In Use Preview
 _Please click on the video below to watch it_   
 [![Watch the video](https://i.ibb.co/C1mSB2M/2023-10-22-16h13-32.png)](https://streamable.com/axny8v)
