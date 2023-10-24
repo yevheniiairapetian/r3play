@@ -81,5 +81,5 @@ Please refer to the [documentation](https://r3play-934f9ea5664d.herokuapp.com/do
 
 ## Contact:
 Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevhenii-airapetian/) or  
-[email](mailto:sonkozhenia11@gmail.com) or 
+[email](mailto:contact@yevheniiairapetian.com) or 
 via the contact information on the [website](https://yevheniiairapetian.github.io/portfolio-website/contact.html) 
