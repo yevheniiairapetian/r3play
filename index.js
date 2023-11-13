@@ -477,7 +477,7 @@ app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async
  */
 
 app.get("/", (req, res) => {
-  res.sendFile('documentation.html', { root: 'public' });
+  res.send("Welcome to R3play API! For more information please visit https://yevheniiairapetian.github.io/r3play-documentation/");
 });
 
 app.use((err, req, res, next) => {
