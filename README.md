@@ -48,7 +48,7 @@ This project contains an R3play web API that allows users to access information 
 - Duration
 - Interesting facts
 - Etc
-#### Movie, anime and TV series features
+#### Movie, anime, and TV series features
 - Add a movie, TV series, or anime to your favorites list (single FavoriteMovies array)
 - Delete a movie, TV series, or anime from the favorites list (single FavoriteMovies array)
 
@@ -68,6 +68,10 @@ This project contains an R3play web API that allows users to access information 
 _Please click on the video below to watch it_   
 
 [![Watch the video](https://i.ibb.co/C1mSB2M/2023-10-22-16h13-32.png)](https://streamable.com/axny8v)
+
+
+## Documentation
+For more information on how to use the R3play API please refer to the [R3play Documentation](https://yevheniiairapetian.github.io/r3play-documentation/)
 
 ## Live Version
 The App is live [here](https://r3play-934f9ea5664d.herokuapp.com/)
