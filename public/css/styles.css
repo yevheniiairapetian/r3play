@@ -1,5 +1,13 @@
+:root{
+    --primary-link-color:#223c50;
+}
 *{
+    font-family:'Montserrat', sans-serif;
     word-break: break-word;
+}
+
+body{
+    background-color:#eeeef7;
 }
 
 table{
@@ -47,13 +55,77 @@ td{
 
 h1, h2, h3, h4{
     text-align: center;
-    padding: 10px;
-    background-color: slategray;
-    color:white;
+    color: #529fcc;
+    font-weight:bold;
+    /* background-color: slategray; */
+    /* color:white; */
 }
 footer{
-    background-color: green;
-    padding: 10px 0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color: #529fcc;
+    /* padding-bottom: 16px; */
+    color: white;
+}
+
+.social-container{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.overview-paragraph{
+    margin-top: 60px;
+    margin-left:20px;
+    line-height: 2em;
+    font-size: 18px;
+    text-align:center;
+}
+
+.fa-code{
+    padding-right:15px;
+}
+
+.fa-code:hover, .fa-circle-info:hover{
+    color: white;
+    transition: color 0.2s ease;
+    translate: 0px -4px;
+    transition: color 0.2s ease, translate 0.3s linear;
+}
+
+.main-footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:auto;
+    background-color: #529fcc;
+    padding-bottom: 16px;
+    color: white;
+}
+
+a{
+    color:var(--primary-link-color);
+    font-size:inherit;
+    text-decoration:underline;
+}
+
+a:hover{
+    color: #529fcc;
+    font-weight: bold;
+    padding-right:2px;
+    /* padding-bottom: 4px; */
+    text-decoration:none;
+    border-bottom:3px solid #529fcc;
+    transition: padding-right 0.3s ease-out, padding-right 0.3s ease-out, border-bottom 0.3s ease-out, padding-bottom 0.3s ease-out, color 0.3s ease-out; 
+}
+
+.main-footer p, .main-footer a{
+    color: #000000;
+    text-align:center;
+    padding: 0;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 .footer-links{
@@ -103,11 +175,11 @@ code{
 }
 
 p{
-    background-color:darkgray;
-    color:white;
+    /* background-color:darkgray; */
+    /* color:white; */
     padding: 15px 10px;
     font-size:16px;
-    text-align:center;
+    /* text-align:center; */
 }
 ol, li{
     background-color: lightgray;
