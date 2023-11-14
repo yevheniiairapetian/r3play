@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root{
     --primary-link-color:#223c50;
 }
@@ -50,11 +57,12 @@ td{
     padding: 10px;
     white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
 }
 
 h1, h2, h3, h4{
-    margin-top: 40px;
+    margin-top:40px;
     text-align: center;
     color: #529fcc;
     font-weight:bold;
@@ -71,21 +79,38 @@ footer{
     color: white;
 }
 
-
 .social-container{
     padding-top:20px;
     padding-bottom:20px;
 }
 
-@keyframes picture{
+@-webkit-keyframes picture{
     0%{
-        transform: translate(8px,0px); 
+        -webkit-transform: translate(8px,0px);
+                transform: translate(8px,0px); 
     }
     50%{
-        transform: translate(-4px, 0px); 
+        -webkit-transform: translate(-4px, 0px);
+                transform: translate(-4px, 0px); 
     }
     100%{
-        transform: translate(8px,0px); 
+        -webkit-transform: translate(8px,0px);
+                transform: translate(8px,0px); 
+    }
+}
+
+@keyframes picture{
+    0%{
+        -webkit-transform: translate(8px,0px);
+                transform: translate(8px,0px); 
+    }
+    50%{
+        -webkit-transform: translate(-4px, 0px);
+                transform: translate(-4px, 0px); 
+    }
+    100%{
+        -webkit-transform: translate(8px,0px);
+                transform: translate(8px,0px); 
     }
 }
 .overview{
@@ -97,9 +122,15 @@ footer{
 }
 
 .main-information{
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    justify-content:center;
-    align-items:center;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
     text-align:center;
     margin-bottom:66px;
     margin-top: 50px;
@@ -113,7 +144,8 @@ footer{
     max-width:400px;
     height:auto;
     margin-right:40px;
-    animation: 3s picture infinite;
+    -webkit-animation: 3s picture infinite;
+            animation: 3s picture infinite;
 }
 
 .fa-code{
@@ -122,15 +154,26 @@ footer{
 
 .fa-code:hover, .fa-circle-info:hover{
     color: white;
+    -webkit-transition: color 0.2s ease;
+    -o-transition: color 0.2s ease;
     transition: color 0.2s ease;
     translate: 0px -4px;
+    -webkit-transition: color 0.2s ease, translate 0.3s linear;
+    -o-transition: color 0.2s ease, translate 0.3s linear;
     transition: color 0.2s ease, translate 0.3s linear;
 }
 
 .main-footer{
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction:column;
-    align-items:center;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+            flex-direction:column;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
     margin-top:auto;
     background-color: #529fcc;
     padding-bottom: 16px;
@@ -150,6 +193,8 @@ a:hover{
     /* padding-bottom: 4px; */
     text-decoration:none;
     border-bottom:3px solid #529fcc;
+    -webkit-transition: padding-right 0.3s ease-out, padding-right 0.3s ease-out, border-bottom 0.3s ease-out, padding-bottom 0.3s ease-out, color 0.3s ease-out;
+    -o-transition: padding-right 0.3s ease-out, padding-right 0.3s ease-out, border-bottom 0.3s ease-out, padding-bottom 0.3s ease-out, color 0.3s ease-out;
     transition: padding-right 0.3s ease-out, padding-right 0.3s ease-out, border-bottom 0.3s ease-out, padding-bottom 0.3s ease-out, color 0.3s ease-out; 
 }
 
@@ -157,8 +202,12 @@ a:hover{
     color: #000000;
     text-align:center;
     padding: 0;
-    flex-direction: column;
-    align-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
 }
 
 .footer-links{
@@ -167,6 +216,8 @@ a:hover{
 
 .footer-links:hover{
     color: white;
+    -webkit-transition: color 0.2s ease;
+    -o-transition: color 0.2s ease;
     transition: color 0.2s ease;
 }
 
@@ -184,6 +235,8 @@ a:hover{
 
 .anchors:hover{
     opacity:0.8;
+    -webkit-transition: opacity 0.2s ease;
+    -o-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
 }
 
@@ -236,7 +289,8 @@ li:hover{
   
   /* scrollbar Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #529FCC;
+    -webkit-box-shadow: inset 0 0 5px #529FCC;
+            box-shadow: inset 0 0 5px #529FCC;
     border-radius: 10px;
   }
   
@@ -248,6 +302,7 @@ li:hover{
 
   ::-webkit-scrollbar-thumb:hover {
     background-color: #529fcc;
+    -webkit-transition: background-color 1s ease-in-out;
     transition: background-color 1s ease-in-out;
   }
 
@@ -260,8 +315,13 @@ li:hover{
     }
 
     .main-information{
-                flex-direction:column;
-                align-items:center;
+                -webkit-box-orient:vertical;
+                -webkit-box-direction:normal;
+                    -ms-flex-direction:column;
+                        flex-direction:column;
+                -webkit-box-align:center;
+                    -ms-flex-align:center;
+                        align-items:center;
                 
     }
 
@@ -288,8 +348,13 @@ li:hover{
     }
 
     .main-information{
-                flex-direction:row;
-                align-items:center;
+                -webkit-box-orient:horizontal;
+                -webkit-box-direction:normal;
+                    -ms-flex-direction:row;
+                        flex-direction:row;
+                -webkit-box-align:center;
+                    -ms-flex-align:center;
+                        align-items:center;
                 
     }
 
