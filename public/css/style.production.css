@@ -132,11 +132,11 @@ footer{
             animation: 3s picture infinite;
 }
 
-.fa-code, .fa-book-open{
+.fa-code, .fa-arrow-up-right-from-square{
     padding-right:15px;
 }
 
-.fa-code:hover, .fa-book-open:hover, .fa-circle-info:hover{
+.fa-code:hover, .fa-arrow-up-right-from-square:hover, .fa-book-open:hover{
     color: white;
     -webkit-transition: color 0.2s ease;
     -o-transition: color 0.2s ease;
