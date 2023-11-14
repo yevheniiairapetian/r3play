@@ -72,6 +72,8 @@ require('./passport');
  * API call to get all "/movies" returning JSON object (Returns all movies)
  * @name getMovies
  * @async
+ * @param {string} /movies
+ * @param {} returns all movies in the response as json object
  */
 app.get("/movies", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.find()
@@ -85,7 +87,13 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
     });
 });
 
+
 /**
+ * API call to get all "/movies" returning JSON object (Returns all movies)
+ * @name getAnimes
+ * @async
+ * @param {string} /animes
+ * @param {} returns all anime in the response as json object
  * API call to get all "/anime" returning JSON object (Returns all anime)
  * @name getAnimes
  * @async
@@ -103,7 +111,15 @@ app.get("/animes", passport.authenticate('jwt', { session: false }), async (req,
 });
 
 /**
- * API call to get all "/tv series" returning JSON object (Returns all tv series)
+ * API call to get all "/movies" returning JSON object (Returns all movies)
+ * @name getTVSeries
+ * @async
+ * @param {string} /tvseries
+ * @param {} returns all TV series in the response as json object
+ * API call to get all "/tvseries" returning JSON object (Returns all TV series)
+ * @name getTVSeries
+ * @async
+ * API call to get all "/tvseries" returning JSON object (Returns all tv series)
  * @name getTVSeries
  * @async
  */
@@ -120,16 +136,21 @@ app.get("/tvseries", passport.authenticate('jwt', { session: false }), async (re
 });
 
 /**
+ * API call to get "/" returning documentation html file
+ * @name getDocumentation
+ * @async
  * API call to get "/documentation" returning HTML file
  * @name getDocumentation
  * @async
  */
 app.get('/documentation', (req, res) => {
-  res.sendFile('documentation.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 /**
  * API call to get "/movies/movieTitle" returning json object with a movie
+ * @param {string} /movies/:movieTitle
+ * @param {} returns json object with a movie
  * @name getMovieTitle
  * @async
  */
@@ -145,6 +166,11 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
 });
 
 /**
+ * API call to get "/animes/:animeTitle" returning json object with an anime
+ * @param {string} /movies/:movieTitle
+ * @param {} returns json object with an anime
+ * @name getAnimeTitle
+ * @async
  * API call to get "/animes/animeTitle" returning json object with an anime
  * @name getAnimeTitle
  * @async
@@ -162,7 +188,10 @@ app.get('/animes/:animeTitle', passport.authenticate('jwt', { session: false }),
 });
 
 /**
- * API call to get "/tvseries/tvTitle" returning json object with a tv series
+ * API call to get "/tvseries/:tvTitle" returning json object with an TV series
+ * @param {string} /movies/:movieTitle
+ * @param {} returns json object with an anime
+ * API call to get "/tvseries/:tvTitle" returning json object with a TV series
  * @name getTVTitle
  * @async
  */
@@ -179,10 +208,13 @@ app.get('/tvseries/:tvTitle', passport.authenticate('jwt', { session: false }), 
 });
 
 /**
- * API call to get "/movies/genres/genreName" returning json object with a genre name and description
+ * API call to get "/movies/genres/:genreName" returning json object with a movie genre name and description
+ * @param {string} /movies/genres/genreName
+ * @param {} returns json object with a movie genre name and description
  * @name getMovieGenre
  * @async
  */
+
 
 app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.findOne({ 'Genre.Name': req.params.genreName })
@@ -196,7 +228,9 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
 });
 
 /**
- * API call to get "/animes/genres/animeName" returning json object with an amime name and description
+ * API call to get "/animes/genres/animeName" returning json object with an anime genre name and description
+ * @param {string} /animes/genres/animeName
+ * @param {} returns json object with an anime genre name and description
  * @name getAnimeGenre
  * @async
  */
@@ -213,7 +247,9 @@ app.get('/animes/genres/:animeName', passport.authenticate('jwt', { session: fal
 });
 
 /**
- * API call to get "/tvseries/genres/tvName" returning json object with a tv series name and description
+ * API call to get "/tvseries/genres/tvName" returning json object with a tv series genre name and description
+ * @param {string} /tvseries/genres/tvName
+ * @param {} returns json object with a TV series genre name and description
  * @name getTVGenre
  * @async
  */
@@ -230,7 +266,9 @@ app.get('/tvseries/genres/:tvName', passport.authenticate('jwt', { session: fals
 });
 
 /**
- * API call to get "/movies/directors/directorName" returning json object with a movie director name and bio
+ * API call to get "/movies/directors/:directorName" eturning json object with a movie director name and bio
+ * @param {string} /movies/directors/:directorName
+ * @param {} returning json object with a movie director name and bio
  * @name getMovieDirector
  * @async
  */
@@ -246,11 +284,15 @@ app.get("/movies/directors/:directorName", passport.authenticate('jwt', { sessio
     });
 });
 
+
 /**
  * API call to get "/animes/directors/directorName" returning json object with an anime director name and bio
+ * @param {string} /animes/directors/directorName
+ * @param {} returning json object with an anime director name and bio
  * @name getAnimeDirector
  * @async
  */
+
 
 app.get("/animes/directors/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.findOne({ 'Director.Name': req.params.directorName })
@@ -263,11 +305,16 @@ app.get("/animes/directors/:directorName", passport.authenticate('jwt', { sessio
     });
 });
 
+
 /**
  * API call to get "/tvseries/directors/directorName" returning json object with a tv series director name and bio
+ * @param {string} /tvseries/directors/directorName
+ * @param {} returning json object with a tv series director name and bio
  * @name getTVDirector
  * @async
  */
+
+
 app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await TVseries.findOne({ 'Director.Name': req.params.directorName })
     .then((tvseries) => {
@@ -279,11 +326,18 @@ app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { sess
     });
 });
 
+
 /**
  * API call to post "/users" returning json object with a new user
+ * @param {object} {Username: string,
+            Password: number,
+            Email: string,
+            Birthday: Date}
+ * @param {} returning json object with a new user
  * @name postUser
  * @async
  */
+
 app.post("/users", [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -323,6 +377,8 @@ app.post("/users", [
 
 /**
  * API call to post "/users/:id/:movies/:MovieID" returning user json object with a favorite movie data
+ * @param {string} /users/:id/:movies/:MovieID
+ * @param {} returning user json object with a favorite movie data
  * @name postMovie
  * @async
  */
@@ -342,11 +398,16 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
   //adds a favorite movies to the list of favorites
 });
 
+
 /**
  * API call to post "/users/:id/:animes/:AnimeID" returning user json object with a favorite anime data (anime gets pushed to favoriteMovies)
- *  @name postAnime
+ * @param {string} /users/:id/:animes/:AnimeID
+ * @param {} returning user json object with a favorite anime data (anime gets pushed to favoriteMovies)
+ * @name postAnime
  * @async
  */
+
+
 app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.AnimeID }
@@ -361,11 +422,15 @@ app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: 
     });
 });
 
+
 /**
  * API call to post "/users/:id/:tvseries/:tvID" returning user json object with a favorite movie data (tv series gets pushed to favoriteMovies)
- *  @name postTvSeries
+ * @param {string} /users/:id/:tvseries/:tvID
+ * @param {} returning user json object with a favorite movie data (tv series gets pushed to favoriteMovies)
+ * @name postTV
  * @async
  */
+
 app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.tvID }
@@ -381,11 +446,15 @@ app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: f
   //adds a favorite tv series to the list of favorites
 });
 
+
 /**
  * API call to delete "/users/:id/:movies/:MovieID" returning user json object with a deleted movie data
+ * @param {string} /users/:id/:movies/:MovieID
+ * @param {} returning user json object with a deleted movie data
  * @name deleteMovie
  * @async
  */
+
 app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.MovieID }
@@ -403,9 +472,12 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
 
 /**
  * API call to delete "/users/:id/:animes/:AnimeID" returning user json object with a deleted movie data (anime gets deleted from the FavoriteMovies)
+ * @param {string} /users/:id/:animes/:AnimeID
+ * @param {} returning user json object with a deleted movie data (anime gets deleted from the FavoriteMovies)
  * @name deleteAnime
  * @async
  */
+
 app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.AnimeID }
@@ -420,11 +492,15 @@ app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session
     });
 });
 
+
 /**
  * API call to delete "/users/:id/:tvseries/:tvID" returning user json object with a deleted movie data (tv series gets deleted from the FavoriteMovies)
- * @name deleteTVSeries
+ * @param {string} /users/:id/:tvseries/:tvID
+ * @param {} returning user json object with a deleted movie data (tv series gets deleted from the FavoriteMovies)
+ * @name deleteTV
  * @async
  */
+
 app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.tvID }
@@ -439,8 +515,14 @@ app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session:
     });
 });
 
+
 /**
  * API call to put "/users/:id" returning user json object with an updated user data
+ * @param {object} {Username: string,
+            Password: number,
+            Email: string,
+            Birthday: Date}
+ * @param {} returning json object with a new user
  * @name putUser
  * @async
  */
@@ -476,8 +558,11 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   })
   });
 
+
 /**
  * API call to delete "/users/:id" returning user json object with a deleted user data
+ * @param {string} /users/:id/
+ * @param {} returning user json object with a deleted user data
  * @name deleteUser
  * @async
  */
@@ -505,7 +590,7 @@ app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async
  */
 
 app.get("/", (req, res) => {
-  res.sendFile('documentation.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 app.use((err, req, res, next) => {
@@ -527,13 +612,13 @@ app.listen(port, '0.0.0.0',() => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AnimeSchema">AnimeSchema</a></li><li><a href="global.html#MovieSchema">MovieSchema</a></li><li><a href="global.html#TVSchema">TVSchema</a></li><li><a href="global.html#deleteAnime">deleteAnime</a></li><li><a href="global.html#deleteMovie">deleteMovie</a></li><li><a href="global.html#deleteTVSeries">deleteTVSeries</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#getAnimeDirector">getAnimeDirector</a></li><li><a href="global.html#getAnimeGenre">getAnimeGenre</a></li><li><a href="global.html#getAnimeTitle">getAnimeTitle</a></li><li><a href="global.html#getAnimes">getAnimes</a></li><li><a href="global.html#getDocumentation">getDocumentation</a></li><li><a href="global.html#getMovieDirector">getMovieDirector</a></li><li><a href="global.html#getMovieGenre">getMovieGenre</a></li><li><a href="global.html#getMovieTitle">getMovieTitle</a></li><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#getTVDirector">getTVDirector</a></li><li><a href="global.html#getTVGenre">getTVGenre</a></li><li><a href="global.html#getTVSeries">getTVSeries</a></li><li><a href="global.html#getTVTitle">getTVTitle</a></li><li><a href="global.html#loginUserAndToken">loginUserAndToken</a></li><li><a href="global.html#postAnime">postAnime</a></li><li><a href="global.html#postMovie">postMovie</a></li><li><a href="global.html#postTvSeries">postTvSeries</a></li><li><a href="global.html#postUser">postUser</a></li><li><a href="global.html#putUser">putUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AnimeSchema">AnimeSchema</a></li><li><a href="global.html#MovieSchema">MovieSchema</a></li><li><a href="global.html#TVSchema">TVSchema</a></li><li><a href="global.html#deleteAnime">deleteAnime</a></li><li><a href="global.html#deleteMovie">deleteMovie</a></li><li><a href="global.html#deleteTV">deleteTV</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#getAnimeDirector">getAnimeDirector</a></li><li><a href="global.html#getAnimeGenre">getAnimeGenre</a></li><li><a href="global.html#getAnimeTitle">getAnimeTitle</a></li><li><a href="global.html#getAnimes">getAnimes</a></li><li><a href="global.html#getDocumentation">getDocumentation</a></li><li><a href="global.html#getMovieDirector">getMovieDirector</a></li><li><a href="global.html#getMovieGenre">getMovieGenre</a></li><li><a href="global.html#getMovieTitle">getMovieTitle</a></li><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#getTVDirector">getTVDirector</a></li><li><a href="global.html#getTVGenre">getTVGenre</a></li><li><a href="global.html#getTVSeries">getTVSeries</a></li><li><a href="global.html#getTVTitle">getTVTitle</a></li><li><a href="global.html#loginUserAndToken">loginUserAndToken</a></li><li><a href="global.html#postAnime">postAnime</a></li><li><a href="global.html#postMovie">postMovie</a></li><li><a href="global.html#postTV">postTV</a></li><li><a href="global.html#postUser">postUser</a></li><li><a href="global.html#putUser">putUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Oct 19 2023 17:29:04 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Nov 14 2023 21:05:09 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
