@@ -4,6 +4,7 @@
 *{
     font-family:'Montserrat', sans-serif;
     word-break: break-word;
+    font-size: 18px;
 }
 
 body{
@@ -97,6 +98,7 @@ footer{
 }
 
 .main-information{
+    font-size: 16px;
     display:flex;
     justify-content:center;
     align-items:center;
