@@ -116,7 +116,7 @@ app.get("/tvseries", passport.authenticate('jwt', { session: false }), async (re
  * @async
  */
 app.get('/documentation', (req, res) => {
-  res.sendFile('global.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 /**
@@ -562,7 +562,7 @@ app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async
  */
 
 app.get("/", (req, res) => {
-  res.sendFile('global.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 app.use((err, req, res, next) => {
