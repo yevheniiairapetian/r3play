@@ -62,7 +62,7 @@ td{
 }
 
 h1, h2, h3, h4{
-    margin-top:40px;
+    margin-top: 40px;
     text-align: center;
     color: #529fcc;
     font-weight:bold;
@@ -79,40 +79,23 @@ footer{
     color: white;
 }
 
+
 .social-container{
     padding-top:20px;
     padding-bottom:20px;
 }
 
-@-webkit-keyframes picture{
+/* @keyframes picture{
     0%{
-        -webkit-transform: translate(8px,0px);
-                transform: translate(8px,0px); 
+        transform: translate(4px,0px); 
     }
     50%{
-        -webkit-transform: translate(-4px, 0px);
-                transform: translate(-4px, 0px); 
+        transform: translate(-4px, 0px); 
     }
     100%{
-        -webkit-transform: translate(8px,0px);
-                transform: translate(8px,0px); 
+        transform: translate(4px,0px); 
     }
-}
-
-@keyframes picture{
-    0%{
-        -webkit-transform: translate(8px,0px);
-                transform: translate(8px,0px); 
-    }
-    50%{
-        -webkit-transform: translate(-4px, 0px);
-                transform: translate(-4px, 0px); 
-    }
-    100%{
-        -webkit-transform: translate(8px,0px);
-                transform: translate(8px,0px); 
-    }
-}
+} */
 .overview{
     margin-top: 60px;
     line-height: 2em;
@@ -143,7 +126,7 @@ footer{
     width:400px;
     max-width:400px;
     height:auto;
-    margin-right:40px;
+    /* margin-right:40px; */
     -webkit-animation: 3s picture infinite;
             animation: 3s picture infinite;
 }
@@ -306,7 +289,7 @@ li:hover{
     transition: background-color 1s ease-in-out;
   }
 
-@media screen and (max-width: 680px){
+@media screen and (max-width: 780px){
   
     .picture{
         width: 65%;
@@ -326,7 +309,7 @@ li:hover{
     }
 
     .overview{
-        width: 80%;
+        width: 100%;
         margin: 30px auto;
     }
 
@@ -339,12 +322,13 @@ li:hover{
     
 }
 
-@media screen and (min-width: 681px){
+@media screen and (min-width: 781px){
   
     .picture{
-        width: 65%;
+        width: 45%;
         height: auto;
         margin-top: 15px;
+        margin-right:40px;
     }
 
     .main-information{
@@ -359,7 +343,7 @@ li:hover{
     }
 
     .overview{
-        width: 80%;
+        width: 95%;
         margin: 30px auto;
     }
 
@@ -367,5 +351,8 @@ li:hover{
         text-align: center;
     }
    
+    .main-footer{
+        padding:0;
+    }
     
 }
