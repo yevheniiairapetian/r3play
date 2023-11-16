@@ -268,14 +268,20 @@ li:hover{
     }
 
     .overview{
+        font-size:16px;
         width: 100%;
         margin: 30px auto;
+        padding: 15px 0;
     }
 
     .main-footer{
         padding-top:10px;
         position:static;
         text-align: center;
+    }
+
+    .main-information_container{
+        padding: 15px 20px;
     }
    
     
