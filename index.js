@@ -1,4 +1,3 @@
-const path = require('path');
 const mongoose = require('mongoose'),
   Models = require("./models");
 const Movies = Models.Movie;
@@ -7,6 +6,15 @@ const TVseries = Models.TVseries;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongodb://localhost:27017/replaydb
+const express = require("express"),
+  morgan = require("morgan"),
+  fs = require("fs"),
+  path = require("path"),
+  uuid = require("uuid"),
+  bodyparser = require("body-parser");
+
+const app = express();
 
 
 // Configure storage engine and filename
@@ -39,16 +47,6 @@ function checkFileType(file, cb) {
   }
 }
 
-
-// mongodb://localhost:27017/replaydb
-const express = require("express"),
-  morgan = require("morgan"),
-  fs = require("fs"),
-  path = require("path"),
-  uuid = require("uuid"),
-  bodyparser = require("body-parser");
-
-const app = express();
 
 app.use(express.static("public"));
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
@@ -537,18 +535,7 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail(),
-  upload(req, res, (err) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: err });
-     }
-    if (!req.file) {
-       return res.status(400).json({ error: 'Please send file' });
-     }
-     console.log(req.file);
-     res.send('File uploaded!');
- }),
+  check('Email', 'Email does not appear to be valid').isEmail()
   ], async (req, res) => {
   let errors = validationResult(req);
   
@@ -562,8 +549,7 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   Username: req.body.Username,
   Password: hashedPassword,
   Email: req.body.Email,
-  Birthday: req.body.Birthday,
-  Image: req.body.Image
+  Birthday: req.body.Birthday
   }
   },
   { new: true }) // This line makes sure that the updated document is returned
