@@ -358,7 +358,7 @@ app.post("/users", [
 
 app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: { FavoriteMovies: req.params.MovieID, WatchedMovies: req.params.MovieID },
+    $push: { FavoriteMovies: req.params.MovieID },
     
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -384,7 +384,7 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
 
 app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: { FavoriteMovies: req.params.AnimeID, WatchedMovies: req.params.AnimeID },
+    $push: { FavoriteMovies: req.params.AnimeID },
     
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -408,7 +408,7 @@ app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: 
 
 app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: { FavoriteMovies: req.params.tvID, WatchedMovies: req.params.tvID },
+    $push: { FavoriteMovies: req.params.tvID },
     
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -433,7 +433,7 @@ app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: f
 
 app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: { FavoriteMovies: req.params.MovieID, WatchedMovies: req.params.MovieID },
+    $pull: { FavoriteMovies: req.params.MovieID },
     
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -457,7 +457,7 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
 
 app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: { FavoriteMovies: req.params.AnimeID, WatchedMovies: req.params.AnimeID },
+    $pull: { FavoriteMovies: req.params.AnimeID },
     
 
   },
@@ -482,7 +482,7 @@ app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session
 
 app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: { FavoriteMovies: req.params.tvID, WatchedMovies: req.params.tvID },
+    $pull: { FavoriteMovies: req.params.tvID },
     
 
   },
@@ -495,6 +495,165 @@ app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session:
       res.status(500).send('Error: ' + err);
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: { WatchedMovies: req.params.MovieID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //adds a favorite movies to the list of favorites
+});
+
+
+/**
+ * API call to post "/users/:id/:animes/:AnimeID" returning user json object with a favorite anime data (anime gets pushed to favoriteMovies)
+ * @param {string} /users/:id/:animes/:AnimeID
+ * @param {} returning user json object with a favorite anime data (anime gets pushed to favoriteMovies)
+ * @name postAnime
+ * @async
+ */
+
+
+app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: { WatchedMovies: req.params.AnimeID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
+
+/**
+ * API call to post "/users/:id/:tvseries/:tvID" returning user json object with a favorite movie data (tv series gets pushed to favoriteMovies)
+ * @param {string} /users/:id/:tvseries/:tvID
+ * @param {} returning user json object with a favorite movie data (tv series gets pushed to favoriteMovies)
+ * @name postTV
+ * @async
+ */
+
+app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: {  WatchedMovies: req.params.tvID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //adds a favorite tv series to the list of favorites
+});
+
+
+/**
+ * API call to delete "/users/:id/:movies/:MovieID" returning user json object with a deleted movie data
+ * @param {string} /users/:id/:movies/:MovieID
+ * @param {} returning user json object with a deleted movie data
+ * @name deleteMovie
+ * @async
+ */
+
+app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: {  WatchedMovies: req.params.MovieID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //deletes a movies from the favorites list
+});
+
+/**
+ * API call to delete "/users/:id/:animes/:AnimeID" returning user json object with a deleted movie data (anime gets deleted from the FavoriteMovies)
+ * @param {string} /users/:id/:animes/:AnimeID
+ * @param {} returning user json object with a deleted movie data (anime gets deleted from the FavoriteMovies)
+ * @name deleteAnime
+ * @async
+ */
+
+app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: {  WatchedMovies: req.params.AnimeID },
+    
+
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
+
+/**
+ * API call to delete "/users/:id/:tvseries/:tvID" returning user json object with a deleted movie data (tv series gets deleted from the FavoriteMovies)
+ * @param {string} /users/:id/:tvseries/:tvID
+ * @param {} returning user json object with a deleted movie data (tv series gets deleted from the FavoriteMovies)
+ * @name deleteTV
+ * @async
+ */
+
+app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: {  WatchedMovies: req.params.tvID },
+    
+
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
+
 
 
 /**
