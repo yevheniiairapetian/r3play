@@ -565,7 +565,7 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   Password: hashedPassword,
   Email: req.body.Email,
   Birthday: req.body.Birthday,
-  Image: req.body.Image
+  // Image: req.body.Image
   }
   },
   { new: true }) // This line makes sure that the updated document is returned
