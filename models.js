@@ -91,9 +91,11 @@ let userSchema = mongoose.Schema({
   Password: { type: String, required: true },
   Email: { type: String, required: true, unique: true },
   Birthday: Date,
-  WatchedMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', ref: 'TVseries', ref: 'Anime' }],
+  WatchedMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', 
+  // ref: 'TVseries', ref: 'Anime'
+ }],
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie',
-  //  ref: 'TVseries', ref: 'Anime' 
+   ref: 'TVseries', ref: 'Anime' 
   }]
 });
 
