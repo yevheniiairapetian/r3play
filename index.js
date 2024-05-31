@@ -615,7 +615,7 @@ app.get("/", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something broke!");
+  res.header("Access-Control-Allow-Origin", "*")
 });
 
 const port = process.env.PORT || 8080;
