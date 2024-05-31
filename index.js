@@ -4,6 +4,7 @@ const Movies = Models.Movie;
 const Anime = Models.Anime;
 const TVseries = Models.TVseries;
 const Users = Models.User;
+require('dotenv').config();
 const { check, validationResult } = require('express-validator');
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongodb://localhost:27017/replaydb
@@ -24,6 +25,7 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use(bodyparser.json());
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com','http://localhost:4200', 'http://localhost:1234', 'https://yevheniiairapetian.github.io','https://r3play.netlify.app'];
+
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);

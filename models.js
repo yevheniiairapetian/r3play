@@ -91,9 +91,9 @@ let userSchema = mongoose.Schema({
   Password: { type: String, required: true },
   Email: { type: String, required: true, unique: true },
   Birthday: Date,
-  Image: {
-    type: String, 
-  },
+  // Image: {
+  //   type: String, 
+  // },
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', ref: 'TVseries', ref: 'Anime' }]
 });
 
