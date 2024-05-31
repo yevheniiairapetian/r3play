@@ -1,3 +1,4 @@
+const path = require('path');
 const mongoose = require('mongoose'),
   Models = require("./models");
 const Movies = Models.Movie;
@@ -6,6 +7,39 @@ const TVseries = Models.TVseries;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+// Configure storage engine and filename
+const storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// Add file type validation
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function(req, file, cb) {
+    checkFileType(file, cb);
+  }
+}).single('myFile');
+
+// Check file type
+function checkFileType(file, cb) {
+  const filetypes = /jpeg|jpg|png|gif/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb('Error: Images only! (jpeg, jpg, png, gif)');
+  }
+}
+
+
 // mongodb://localhost:27017/replaydb
 const express = require("express"),
   morgan = require("morgan"),
@@ -503,7 +537,18 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  upload(req, res, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: err });
+     }
+    if (!req.file) {
+       return res.status(400).json({ error: 'Please send file' });
+     }
+     console.log(req.file);
+     res.send('File uploaded!');
+ }),
   ], async (req, res) => {
   let errors = validationResult(req);
   
@@ -517,7 +562,8 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   Username: req.body.Username,
   Password: hashedPassword,
   Email: req.body.Email,
-  Birthday: req.body.Birthday
+  Birthday: req.body.Birthday,
+  Image: req.body.Image
   }
   },
   { new: true }) // This line makes sure that the updated document is returned
