@@ -539,20 +539,20 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
  */
 
 
-app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: { WatchedMovies: req.params.AnimeID },
+// app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Users.findOneAndUpdate({ Username: req.params.id }, {
+//     $push: { WatchedMovies: req.params.AnimeID },
     
-  },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+//   },
+//     { new: true }) 
+//     .then((updatedUser) => {
+//       res.status(201).json(updatedUser);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 /**
@@ -563,21 +563,20 @@ app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: 
  * @async
  */
 
-app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: {  WatchedMovies: req.params.tvID },
+// app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Users.findOneAndUpdate({ Username: req.params.id }, {
+//     $push: {  WatchedMovies: req.params.tvID },
     
-  },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-  //adds a favorite tv series to the list of favorites
-});
+//   },
+//     { new: true }) 
+//     .then((updatedUser) => {
+//       res.status(201).json(updatedUser);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 /**
@@ -601,7 +600,6 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
-  //deletes a movies from the favorites list
 });
 
 /**
@@ -612,21 +610,21 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
  * @async
  */
 
-app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: {  WatchedMovies: req.params.AnimeID },
+// app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Users.findOneAndUpdate({ Username: req.params.id }, {
+//     $pull: {  WatchedMovies: req.params.AnimeID },
     
 
-  },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+//   },
+//     { new: true }) 
+//     .then((updatedUser) => {
+//       res.status(201).json(updatedUser);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 /**
@@ -637,21 +635,21 @@ app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session
  * @async
  */
 
-app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: {  WatchedMovies: req.params.tvID },
+// app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Users.findOneAndUpdate({ Username: req.params.id }, {
+//     $pull: {  WatchedMovies: req.params.tvID },
     
 
-  },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+//   },
+//     { new: true }) 
+//     .then((updatedUser) => {
+//       res.status(201).json(updatedUser);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 
