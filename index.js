@@ -138,9 +138,9 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.post('/movies/:movieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.findOneAndUpdate({ Title: req.params.MovieID}, {
-  $push: { R3playRating: req.params.MovieID },
+app.post('/movies/:movieID/:R3playRating', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.findOneAndUpdate({ Title: req.params.movieID}, {
+  $push: { R3playRating: req.params.R3playRating },
 },
 { new: true }) // This line makes sure that the updated document is returned
     .then((updatedMovie) => {
