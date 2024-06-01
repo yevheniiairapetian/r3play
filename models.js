@@ -92,6 +92,9 @@ let userSchema = mongoose.Schema({
   Password: { type: String, required: true },
   Email: { type: String, required: true, unique: true },
   Birthday: Date,
+  Photo: {
+    type: String
+},
   WatchedMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', 
   ref: 'TVseries', 
   ref: 'Anime'
