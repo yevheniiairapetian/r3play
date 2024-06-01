@@ -710,7 +710,7 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
  * @async
  */
 
-app.put("/users/:id/photo", passport.authenticate('jwt', { session: false }), [
+app.put("/users/:id/photo", upload.single('photo'), (req, res), passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
@@ -729,7 +729,7 @@ app.put("/users/:id/photo", passport.authenticate('jwt', { session: false }), [
   Password: hashedPassword,
   Email: req.body.Email,
   Birthday: req.body.Birthday,
-  Photo: req.body.Image
+  Photo: req.file.filename
   }
   },
   { new: true }) // This line makes sure that the updated document is returned
