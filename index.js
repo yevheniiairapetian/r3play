@@ -138,7 +138,7 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.post('/movies/:movieID/R3playRating', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post('/R3playRating/movies/:movieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.findOneAndUpdate({ Title: req.params.movieID}, {
   $push: { R3playRating: req.params.R3playRating },
 },
