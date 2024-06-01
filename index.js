@@ -710,24 +710,24 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
  * @async
  */
 
-app.put("/users/:id/photo", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $set:
-    {
+// app.put("/users/:id/photo", passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Users.findOneAndUpdate({ Username: req.params.id }, {
+//     $set:
+//     {
    
-    Photo: req.file.filename
-    }
+//     Photo: req.file.filename
+//     }
     
-  },
-    { new: true }) 
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+//   },
+//     { new: true }) 
+//     .then((updatedUser) => {
+//       res.status(201).json(updatedUser);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 
