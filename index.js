@@ -5,6 +5,8 @@ const Anime = Models.Anime;
 const TVseries = Models.TVseries;
 const Users = Models.User;
 require('dotenv').config();
+const router = require('express').Router();
+
 const { check, validationResult } = require('express-validator');
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongodb://localhost:27017/replaydb
@@ -771,6 +773,26 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
  * @name deleteUser
  * @async
  */
+
+router.route('/add').post(upload.single('photo'), async (req, res) =>  {
+	await Users.findOneAndUpdate({ Username: req.params.id }, {
+	
+
+	$set:
+    {
+   
+      photo: req.file.filename
+    }
+  },
+	{ new: true }) // This line makes sure that the updated document is returned
+  .then((updatedUser) => {
+          res.status(201).json(updatedUser);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        });
+    });
 
 app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndRemove({ Username: req.params.id })
