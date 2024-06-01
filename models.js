@@ -21,6 +21,7 @@ let movieSchema = mongoose.Schema({
   ImagePath: String,
   Featured: Boolean,
   Actors: [String],
+  R3playRating: [String],
   InterestingFacts: [String],
   Rating: String,
   ReleaseDate: Date,
