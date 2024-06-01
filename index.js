@@ -16,27 +16,27 @@ const express = require("express"),
   path = require("path"),
   uuid = require("uuid"),
   bodyparser = require("body-parser");
-  const multer = require('multer');
+  // const multer = require('multer');
 
-  const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'images');
-    },
-    filename: function(req, file, cb) {   
-        cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
+//   const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'images');
+//     },
+//     filename: function(req, file, cb) {   
+//         cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
 
-const fileFilter = (req, file, cb) => {
-    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if(allowedFileTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-}
+// const fileFilter = (req, file, cb) => {
+//     const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+//     if(allowedFileTypes.includes(file.mimetype)) {
+//         cb(null, true);
+//     } else {
+//         cb(null, false);
+//     }
+// }
 
-let upload = multer({ storage, fileFilter });
+// let upload = multer({ storage, fileFilter });
 
 const app = express();
 
@@ -365,17 +365,14 @@ app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { sess
  * @async
  */
 
-// router.route('/add').post(upload.single('photo'), async (req, res) =>  {
-// 	await Users.findOneAndUpdate({ Username: req.params.id }, {
-	
 
-app.post("/users", (upload.single('photo'),[
+
+app.post("/users", [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail(),
-  // check('Image', 'Email does not appear to be valid').isImage()
-]), async (req, res) => {
+  check('Email', 'Email does not appear to be valid').isEmail()
+], async (req, res) => {
   let errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -393,7 +390,6 @@ app.post("/users", (upload.single('photo'),[
             Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
-            Image: req.file.filename,
           })
           .then((user) => { res.status(201).json({ Username: user.Username, Email: user.Email }) })
           .catch((error) => {
