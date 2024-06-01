@@ -365,14 +365,17 @@ app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { sess
  * @async
  */
 
+// router.route('/add').post(upload.single('photo'), async (req, res) =>  {
+// 	await Users.findOneAndUpdate({ Username: req.params.id }, {
+	
 
-
-app.post("/users", [
+app.post("/users", (upload.single('photo'),[
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
-], async (req, res) => {
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  // check('Image', 'Email does not appear to be valid').isImage()
+]), async (req, res) => {
   let errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -390,6 +393,7 @@ app.post("/users", [
             Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
+            Image: req.file.filename,
           })
           .then((user) => { res.status(201).json({ Username: user.Username, Email: user.Email }) })
           .catch((error) => {
@@ -774,25 +778,26 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
  * @async
  */
 
-router.route('/add').post(upload.single('photo'), async (req, res) =>  {
-	await Users.findOneAndUpdate({ Username: req.params.id }, {
+// router.route('/add').post(upload.single('photo'), async (req, res) =>  {
+// 	await Users.findOneAndUpdate({ Username: req.params.id }, {
 	
 
-	$set:
-    {
+// 	$set:
+//     {
    
-      photo: req.file.filename
-    }
-  },
-	{ new: true }) // This line makes sure that the updated document is returned
-  .then((updatedUser) => {
-          res.status(201).json(updatedUser);
-        })
-        .catch((err) => {
-          console.error(err);
-          res.status(500).send('Error: ' + err);
-        });
-    });
+//       photo: req.file.filename
+//     }
+//   },
+	// { new: true }) 
+  // This line makes sure that the updated document is returned
+  // .then((updatedUser) => {
+  //         res.status(201).json(updatedUser);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //         res.status(500).send('Error: ' + err);
+  //       });
+  //   });
 
 app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndRemove({ Username: req.params.id })
