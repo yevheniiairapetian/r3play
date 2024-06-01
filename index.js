@@ -14,6 +14,27 @@ const express = require("express"),
   path = require("path"),
   uuid = require("uuid"),
   bodyparser = require("body-parser");
+  const multer = require('multer');
+
+  const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'images');
+    },
+    filename: function(req, file, cb) {   
+        cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if(allowedFileTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+let upload = multer({ storage, fileFilter });
 
 const app = express();
 
@@ -342,6 +363,8 @@ app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { sess
  * @async
  */
 
+
+
 app.post("/users", [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -364,7 +387,7 @@ app.post("/users", [
             Username: req.body.Username,
             Password: hashedPassword,
             Email: req.body.Email,
-            Birthday: req.body.Birthday
+            Birthday: req.body.Birthday,
           })
           .then((user) => { res.status(201).json({ Username: user.Username, Email: user.Email }) })
           .catch((error) => {
@@ -687,7 +710,7 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
  * @async
  */
 
-app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
+app.put("/users/:id/photo", passport.authenticate('jwt', { session: false }), [
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
@@ -705,7 +728,8 @@ app.put("/users/:id", passport.authenticate('jwt', { session: false }), [
   Username: req.body.Username,
   Password: hashedPassword,
   Email: req.body.Email,
-  Birthday: req.body.Birthday
+  Birthday: req.body.Birthday,
+  Photo: req.body.Image
   }
   },
   { new: true }) // This line makes sure that the updated document is returned
