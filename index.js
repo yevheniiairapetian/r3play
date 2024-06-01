@@ -138,19 +138,19 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.post('/R3playRating/movies/:movieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.findOneAndUpdate({ Title: req.params.movieID}, {
-  $push: { R3playRating: req.params.R3playRating },
-},
-{ new: true }) // This line makes sure that the updated document is returned
-    .then((updatedMovie) => {
-      res.status(201).json(updatedMovie);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+// app.post('/R3playRating/movies/:movieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Movies.findOneAndUpdate({ Title: req.params.movieID}, {
+//   $push: { R3playRating: req.params.R3playRating },
+// },
+// { new: true }) 
+//     .then((updatedMovie) => {
+//       res.status(201).json(updatedMovie);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 
 
 app.post("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
