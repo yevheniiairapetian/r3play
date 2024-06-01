@@ -356,7 +356,7 @@ app.post("/users", [
  * @async
  */
 
-app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post("/users/:id/:favorites/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.MovieID },
     
@@ -382,7 +382,7 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
  */
 
 
-app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post("/users/:id/:favorites/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.AnimeID },
     
@@ -406,7 +406,7 @@ app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: 
  * @async
  */
 
-app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post("/users/:id/:favorites/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.tvID },
     
@@ -431,7 +431,7 @@ app.post("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: f
  * @async
  */
 
-app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:id/:favorites/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.MovieID },
     
@@ -455,7 +455,7 @@ app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session
  * @async
  */
 
-app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:id/:favorites/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.AnimeID },
     
@@ -480,7 +480,7 @@ app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session
  * @async
  */
 
-app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:id/:favorites/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.tvID },
     
@@ -513,7 +513,7 @@ app.delete("/users/:id/:tvseries/:tvID", passport.authenticate('jwt', { session:
 
 
 
-app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post("/users/:id/:watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { WatchedMovies: req.params.MovieID },
     
@@ -587,7 +587,7 @@ app.post("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: 
  * @async
  */
 
-app.delete("/users/:id/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:id/:watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: {  WatchedMovies: req.params.MovieID },
     
