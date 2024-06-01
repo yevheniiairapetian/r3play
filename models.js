@@ -92,7 +92,8 @@ let userSchema = mongoose.Schema({
   Email: { type: String, required: true, unique: true },
   Birthday: Date,
   WatchedMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie', 
-  // ref: 'TVseries', ref: 'Anime'
+  ref: 'TVseries', 
+  // ref: 'Anime'
  }],
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie',
    ref: 'TVseries', ref: 'Anime' 
