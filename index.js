@@ -505,14 +505,6 @@ app.delete("/users/:id/favorites/:tvseries/:tvID", passport.authenticate('jwt', 
 
 
 
-
-
-
-
-
-
-
-
 app.post("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { WatchedMovies: req.params.MovieID },
@@ -539,20 +531,20 @@ app.post("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { s
  */
 
 
-// app.post("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-//   await Users.findOneAndUpdate({ Username: req.params.id }, {
-//     $push: { WatchedMovies: req.params.AnimeID },
+app.post("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: { WatchedMovies: req.params.AnimeID },
     
-//   },
-//     { new: true }) 
-//     .then((updatedUser) => {
-//       res.status(201).json(updatedUser);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.status(500).send('Error: ' + err);
-//     });
-// });
+  },
+    { new: true }) 
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 
 /**
@@ -610,21 +602,21 @@ app.delete("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', {
  * @async
  */
 
-// app.delete("/users/:id/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
-//   await Users.findOneAndUpdate({ Username: req.params.id }, {
-//     $pull: {  WatchedMovies: req.params.AnimeID },
+app.delete("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: {  WatchedMovies: req.params.AnimeID },
     
 
-//   },
-//     { new: true }) 
-//     .then((updatedUser) => {
-//       res.status(201).json(updatedUser);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.status(500).send('Error: ' + err);
-//     });
-// });
+  },
+    { new: true }) 
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 
 /**
