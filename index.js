@@ -6,17 +6,28 @@ const TVseries = Models.TVseries;
 const Users = Models.User;
 require('dotenv').config();
 const router = require('express').Router();
-
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 const { check, validationResult } = require('express-validator');
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongodb://localhost:27017/replaydb
+
+function isImage(url) {
+  return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(
+    url,
+  );
+}
+
 const express = require("express"),
   morgan = require("morgan"),
   fs = require("fs"),
   path = require("path"),
   uuid = require("uuid"),
   bodyparser = require("body-parser");
-  // const multer = require('multer');
+// const multer = require('multer');
 
 //   const storage = multer.diskStorage({
 //     destination: function(req, file, cb) {
@@ -47,7 +58,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(bodyparser.json());
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com','http://localhost:4200', 'http://localhost:1234', 'https://yevheniiairapetian.github.io','https://r3play.netlify.app'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:4200', 'http://localhost:1234', 'https://yevheniiairapetian.github.io', 'https://r3play.netlify.app'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -179,7 +190,7 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
 app.post("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { WatchedMovies: req.params.MovieID },
-    
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -365,13 +376,26 @@ app.get("/tvseries/directors/:directorName", passport.authenticate('jwt', { sess
  * @async
  */
 
+app.patch("/profileImg", verifyToken, (req, res) => {
+  console.log(req.body);
+  const img = req.body.image;
+  Users.findOneAndUpdate({ Username: req.params.id }, { $set: { Image: img } })
+  .then((updatedUser) => {
+    res.status(201).json(updatedUser);
+  })
+    .catch((err) => {
+      console.log(err);
+    });
 
+});
 
 app.post("/users", [
+  
   check('Username', 'Username is required').isLength({ min: 5 }),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  check('Image', 'Image does not appear to be valid').isImage()
 ], async (req, res) => {
   let errors = validationResult(req);
 
@@ -390,6 +414,7 @@ app.post("/users", [
             Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
+            Image: req.body.Image,
           })
           .then((user) => { res.status(201).json({ Username: user.Username, Email: user.Email }) })
           .catch((error) => {
@@ -415,7 +440,7 @@ app.post("/users", [
 app.post("/users/:id/favorites/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.MovieID },
-    
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -454,7 +479,7 @@ app.post("/users/:id/favorites/:movies/:MovieID", passport.authenticate('jwt', {
 app.post("/users/:id/favorites/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.AnimeID },
-    
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -478,7 +503,7 @@ app.post("/users/:id/favorites/:animes/:AnimeID", passport.authenticate('jwt', {
 app.post("/users/:id/favorites/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { FavoriteMovies: req.params.tvID },
-    
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -503,7 +528,7 @@ app.post("/users/:id/favorites/:tvseries/:tvID", passport.authenticate('jwt', { 
 app.delete("/users/:id/favorites/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.MovieID },
-    
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -527,7 +552,7 @@ app.delete("/users/:id/favorites/:movies/:MovieID", passport.authenticate('jwt',
 app.delete("/users/:id/favorites/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.AnimeID },
-    
+
 
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -552,7 +577,7 @@ app.delete("/users/:id/favorites/:animes/:AnimeID", passport.authenticate('jwt',
 app.delete("/users/:id/favorites/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $pull: { FavoriteMovies: req.params.tvID },
-    
+
 
   },
     { new: true }) // This line makes sure that the updated document is returned
@@ -589,9 +614,9 @@ app.delete("/users/:id/favorites/:tvseries/:tvID", passport.authenticate('jwt', 
 app.post("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
     $push: { WatchedMovies: req.params.AnimeID },
-    
+
   },
-    { new: true }) 
+    { new: true })
     .then((updatedUser) => {
       res.status(201).json(updatedUser);
     })
@@ -612,10 +637,10 @@ app.post("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', { s
 
 app.post("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $push: {  WatchedMovies: req.params.tvID },
-    
+    $push: { WatchedMovies: req.params.tvID },
+
   },
-    { new: true }) 
+    { new: true })
     .then((updatedUser) => {
       res.status(201).json(updatedUser);
     })
@@ -636,8 +661,8 @@ app.post("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { se
 
 app.delete("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: {  WatchedMovies: req.params.MovieID },
-    
+    $pull: { WatchedMovies: req.params.MovieID },
+
   },
     { new: true }) // This line makes sure that the updated document is returned
     .then((updatedUser) => {
@@ -659,11 +684,11 @@ app.delete("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', {
 
 app.delete("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: {  WatchedMovies: req.params.AnimeID },
-    
+    $pull: { WatchedMovies: req.params.AnimeID },
+
 
   },
-    { new: true }) 
+    { new: true })
     .then((updatedUser) => {
       res.status(201).json(updatedUser);
     })
@@ -684,11 +709,11 @@ app.delete("/users/:id/watched/:animes/:AnimeID", passport.authenticate('jwt', {
 
 app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
-    $pull: {  WatchedMovies: req.params.tvID },
-    
+    $pull: { WatchedMovies: req.params.tvID },
+
 
   },
-    { new: true }) 
+    { new: true })
     .then((updatedUser) => {
       res.status(201).json(updatedUser);
     })
@@ -716,10 +741,10 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
 //   await Users.findOneAndUpdate({ Username: req.params.id }, {
 //     $set:
 //     {
-   
+
 //     Photo: req.file.filename
 //     }
-    
+
 //   },
 //     { new: true }) 
 //     .then((updatedUser) => {
@@ -740,7 +765,7 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
 //   check('Email', 'Email does not appear to be valid').isEmail()
 //   ], async (req, res) => {
 //   let errors = validationResult(req);
-  
+
 //   if (!errors.isEmpty()) {
 //   return res.status(422).json({ errors: errors.array() });
 //   }
@@ -776,24 +801,24 @@ app.delete("/users/:id/watched/:tvseries/:tvID", passport.authenticate('jwt', { 
 
 // router.route('/add').post(upload.single('photo'), async (req, res) =>  {
 // 	await Users.findOneAndUpdate({ Username: req.params.id }, {
-	
+
 
 // 	$set:
 //     {
-   
+
 //       photo: req.file.filename
 //     }
 //   },
-	// { new: true }) 
-  // This line makes sure that the updated document is returned
-  // .then((updatedUser) => {
-  //         res.status(201).json(updatedUser);
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         res.status(500).send('Error: ' + err);
-  //       });
-  //   });
+// { new: true }) 
+// This line makes sure that the updated document is returned
+// .then((updatedUser) => {
+//         res.status(201).json(updatedUser);
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         res.status(500).send('Error: ' + err);
+//       });
+//   });
 
 app.delete("/users/:id", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndRemove({ Username: req.params.id })
@@ -827,6 +852,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0',() => {
- console.log('Listening on Port ' + port);
+app.listen(port, '0.0.0.0', () => {
+  console.log('Listening on Port ' + port);
 });
