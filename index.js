@@ -74,7 +74,7 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
 });
 
 
-app.get("/directors", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/actors", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.find()
     .then((MovieDirector) => {
       res.status(201).json(MovieDirector);
@@ -86,6 +86,31 @@ app.get("/directors", passport.authenticate('jwt', { session: false }), async (r
     });
 });
 
+
+app.get("/actors/:actorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Actor.findOne({ Name: req.params.actorName })
+    .then((Actor) => {
+      res.status(201).json(Actor);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error:' + err);
+      //returns a specific actor in the response as json object
+    });
+});
+
+
+// app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }), async (req, res) => {
+//   await Movies.findOne({ Title: req.params.movieTitle })
+//     .then((movie) => {
+//       res.status(201).json(movie);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
+
 /**
  * API call to get all "/movies" returning JSON object (Returns all movies)
  * @name getAnimes
@@ -96,7 +121,9 @@ app.get("/directors", passport.authenticate('jwt', { session: false }), async (r
  * @name getAnimes
  * @async
  */
-app.get("/animes", passport.authenticate('jwt', { session: false }), async (req, res) => {
+
+
+app.get("/animes/", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Anime.find()
     .then((anime) => {
       res.status(201).json(anime);
