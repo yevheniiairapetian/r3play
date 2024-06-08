@@ -75,9 +75,9 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
 
 
 app.get("/actors", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find()
-    .then((MovieDirector) => {
-      res.status(201).json(MovieDirector);
+  await Actors.find()
+    .then((actors) => {
+      res.status(201).json(actors);
     })
     .catch((err) => {
       console.error(err);
@@ -88,7 +88,7 @@ app.get("/actors", passport.authenticate('jwt', { session: false }), async (req,
 
 
 app.get("/actors/:actorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Actor.findOne({ Name: req.params.actorName })
+  await Actors.findOne({ Name: req.params.actorName })
     .then((Actor) => {
       res.status(201).json(Actor);
     })
