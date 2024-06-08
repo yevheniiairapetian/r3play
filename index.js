@@ -3,6 +3,16 @@ const mongoose = require('mongoose'),
 const Movies = Models.Movie;
 const Anime = Models.Anime;
 const TVseries = Models.TVseries;
+const Cartoon = Models.Cartoon;
+const Producer = Models.Producer;
+const Genre = Models.Genre;
+const Actor = Models.Actor;
+const Director = Models.Director;
+const Composer = Models.Composer;
+const Editor = Models.Editor;
+const ProductionCompany = Models.ProductionCompany;
+const ScreenWriter = Models.ScreenWriter;
+const Cinematographer = Models.Cinematographer;
 const Users = Models.User;
 require('dotenv').config();
 const router = require('express').Router();
@@ -63,6 +73,18 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
     });
 });
 
+
+app.get("/directors", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.find()
+    .then((MovieDirector) => {
+      res.status(201).json(MovieDirector);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error:' + err);
+      //returns all movies in the response as json object
+    });
+});
 
 /**
  * API call to get all "/movies" returning JSON object (Returns all movies)
