@@ -65,7 +65,7 @@ let actorSchema = mongoose.Schema({
   NotableWorks: {
     Title: String,
     Description: String,
-    ReleaseDate: Date,
+    ReleaseDate: String,
     Rating: String,
     Duration: String,
     IMDbRating: String,
@@ -74,7 +74,7 @@ let actorSchema = mongoose.Schema({
   AllWorks: {
     Title: String,
     Description: String,
-    ReleaseDate: Date,
+    ReleaseDate: String,
     Rating: String,
     Duration: String,
     IMDbRating: String,
