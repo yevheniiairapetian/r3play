@@ -61,7 +61,7 @@ let actorSchema = mongoose.Schema({
   Nicknames: [String],
   Occupation:[String],
   YearsActive: String,
-  Spouses: String,
+  Spouses: [String],
   NotableWorks: {
     Title: String,
     Description: String,
