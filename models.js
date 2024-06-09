@@ -159,6 +159,9 @@ let genreSchema = mongoose.Schema({
   NotableActors: {
     Name: String,
     Bio: String,
+    ImagePath: String,
+    Birth: String,
+    Death: String
   },
   NotableProducers: {
     Name: String,
