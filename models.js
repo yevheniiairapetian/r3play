@@ -70,7 +70,7 @@ let actorSchema = mongoose.Schema({
     Rating: String,
     Duration: String,
     IMDbRating: String,
-  
+    Genre: String,
   },
   AllWorks: {
     ImagePath: String,
@@ -80,7 +80,7 @@ let actorSchema = mongoose.Schema({
     Rating: String,
     Duration: String,
     IMDbRating: String,
-  
+    Genre: String,
   },
   UnrealizedProjects:[String],
   Awards: [String],
