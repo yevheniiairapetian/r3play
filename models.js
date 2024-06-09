@@ -63,6 +63,7 @@ let actorSchema = mongoose.Schema({
   YearsActive: String,
   Spouses: [String],
   NotableWorks: {
+    ImagePath: String,
     Title: String,
     Description: String,
     ReleaseDate: String,
@@ -72,6 +73,7 @@ let actorSchema = mongoose.Schema({
   
   },
   AllWorks: {
+    ImagePath: String,
     Title: String,
     Description: String,
     ReleaseDate: String,
