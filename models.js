@@ -179,7 +179,17 @@ let genreSchema = mongoose.Schema({
   NotableWorks: {
   Title: String,
   Description: String,
-  ReleaseDate: Date,
+  ReleaseDate: String,
+  InterestingFacts: [String],
+  Rating: String,
+  Duration: String,
+  IMDbRating: String,
+
+},
+AllWorks: {
+  Title: String,
+  Description: String,
+  ReleaseDate: String,
   InterestingFacts: [String],
   Rating: String,
   Duration: String,

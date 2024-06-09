@@ -5,7 +5,7 @@ const Anime = Models.Anime;
 const TVseries = Models.TVseries;
 const Cartoon = Models.Cartoon;
 const Producer = Models.Producer;
-const Genre = Models.Genre;
+const Genres = Models.Genre;
 const Actors = Models.Actor;
 const Director = Models.Director;
 const Composer = Models.Composer;
@@ -99,6 +99,32 @@ app.get("/actors/:actorName", passport.authenticate('jwt', { session: false }), 
     });
 });
 
+
+
+app.get("/genres", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Genres.find()
+    .then((genres) => {
+      res.status(201).json(genres);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error:' + err);
+      //returns all movies in the response as json object
+    });
+});
+
+
+app.get("/genres/:genreName", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Genres.findOne({ Name: req.params.genreName })
+    .then((Genre) => {
+      res.status(201).json(Actor);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error:' + err);
+      //returns a specific actor in the response as json object
+    });
+});
 
 // app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }), async (req, res) => {
 //   await Movies.findOne({ Title: req.params.movieTitle })
