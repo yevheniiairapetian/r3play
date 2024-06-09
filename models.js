@@ -145,7 +145,7 @@ let genreSchema = mongoose.Schema({
   Name: { type: String, required: true },
   Description: { type: String },
   Subgenres: {
-    Name: String,
+    Title: String,
     Description: String,
     ImagePath: String
   },
