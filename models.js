@@ -184,6 +184,7 @@ let genreSchema = mongoose.Schema({
   Rating: String,
   Duration: String,
   IMDbRating: String,
+  ImagePath: String
 
 },
 AllWorks: {
@@ -194,6 +195,8 @@ AllWorks: {
   Rating: String,
   Duration: String,
   IMDbRating: String,
+  ImagePath: String
+
 
 },
   ImagePath: String,
