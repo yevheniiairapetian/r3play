@@ -248,6 +248,24 @@ app.post("/users/:id/liked/:actors/:ActorID", passport.authenticate('jwt', { ses
 
 
 
+app.post("/users/:id/likedgenre/:genres/:GenreID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $push: { LikedGenres: req.params.GenreID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+  //adds a favorite movies to the list of favorites
+});
+
+
+
 
 app.post("/users/:id/watched/:movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.id }, {
@@ -713,6 +731,24 @@ app.delete("/users/:id/liked/:actors/:ActorID", passport.authenticate('jwt', { s
       res.status(500).send('Error: ' + err);
     });
 });
+
+
+
+app.delete("/users/:id/likedgenre/:genres/:GenreID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.id }, {
+    $pull: {  LikedGenres: req.params.GenreID },
+    
+  },
+    { new: true }) // This line makes sure that the updated document is returned
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
 
 /**
  * API call to delete "/users/:id/:animes/:AnimeID" returning user json object with a deleted movie data (anime gets deleted from the FavoriteMovies)
