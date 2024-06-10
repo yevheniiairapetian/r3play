@@ -625,6 +625,8 @@ let userSchema = mongoose.Schema({
  }],
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie',
    ref: 'TVseries', ref: 'Anime' 
+  }],
+  LikedActors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Actor',
   }]
 });
 
