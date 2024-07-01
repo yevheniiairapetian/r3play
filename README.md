@@ -74,7 +74,7 @@ _Please click on the video below to watch it_
 For more information on how to use the R3play API please refer to the [R3play Documentation](https://yevheniiairapetian.github.io/r3play-documentation/)
 
 ## Live Version
-The API is live at [http://www.r3play-api.com/](http://www.r3play-api.com/)
+The API is live at [https://r3play-934f9ea5664d.herokuapp.com/](https://r3play-934f9ea5664d.herokuapp.com/)
 
 ## Clone and Preview 
 To clone the app use the following command:
