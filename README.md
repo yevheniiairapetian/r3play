@@ -1,7 +1,7 @@
 # r3play
 
 ## Description
-This project contains an R3play web API that allows users to access information about different movies, TV series, and anime from a MongoDB Database. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App front-end [here](https://github.com/yevheniiairapetian/r3play-client)
+This project contains an R3play web API that allows users to access information about different movies, TV series, and anime from a MongoDB Database. It is used by the R3play front-end [here](https://github.com/yevheniiairapetian/r3play-client) and the myFlix-Angular-App front-end [here](https://github.com/yevheniiairapetian/myFlix-Angular-client)
 
 ## Technologies Used
 - Javascript
@@ -74,7 +74,7 @@ _Please click on the video below to watch it_
 For more information on how to use the R3play API please refer to the [R3play Documentation](https://yevheniiairapetian.github.io/r3play-documentation/)
 
 ## Live Version
-The App is live [here](https://r3play-934f9ea5664d.herokuapp.com/)
+The API is live at [https://r3play-934f9ea5664d.herokuapp.com/](https://r3play-934f9ea5664d.herokuapp.com/)
 
 ## Clone and Preview 
 To clone the app use the following command:
@@ -84,6 +84,4 @@ Install the required dependencies using the ```npm install``` command. Use the `
 Please refer to the [documentation](https://r3play-934f9ea5664d.herokuapp.com/documentation) for more information.
 
 ## Contact:
-Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevheniiairapetian/) or  
-[email](mailto:contact@yevheniiairapetian.com) or 
-via the contact information on the [website](https://yevheniiairapetian.com/#/contact) 
+Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevheniiairapetian/) or [email](mailto:contact@yevheniiairapetian.com) or via the contact form on my [portfolio](https://yevheniiairapetian.com/#/contact) 
