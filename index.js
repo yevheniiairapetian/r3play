@@ -37,7 +37,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(bodyparser.json());
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com','http://localhost:4200', 'http://localhost:1234', 'https://yevheniiairapetian.github.io','https://r3play.netlify.app'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com','http://localhost:4200', 'http://localhost:1234', 'https://yevheniiairapetian.github.io','https://r3play.netlify.app', "https://onr3peat.com"];
 
 app.use(cors({
   origin: (origin, callback) => {
